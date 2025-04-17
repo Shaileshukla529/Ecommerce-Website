@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Register</title>
+    <link rel="stylesheet" href="style.css"> </head>
+  <body>
+
+    <div id="loginContainer" class="login-container">
+      <div class="login-header">
+        <h1>Login</h1>
+        <p>Enter your credentials to access your account</p>
+      </div>
+
+      <div id="loginNotification" class="notification"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" required>
+          <span class="error-message" id="login-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required>
+          <span class="error-message" id="login-password-error"></span>
+        </div>
+
+        <button type="submit" class="btn">Log In</button>
+      </form>
+
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <div class="register-link">
+        <p>Don't have an account? <a href="#" id="showRegister">Register</a></p>
+      </div>
+    </div>
+
+    <div id="registerContainer" class="login-container" style="display: none;">
+        <div class="login-header">
+          <h1>Register</h1>
+          <p>Create a new account</p>
+        </div>
+
+        <div id="registerNotification" class="notification"></div>
+
+        <form id="registerForm">
+          <div class="form-group">
+              <label for="register-username">Username</label>
+              <input type="text" id="register-username" name="username" required>
+              <span class="error-message" id="register-username-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email</label>
+            <input type="email" id="register-email" name="email" required>
+            <span class="error-message" id="register-email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" name="password" required>
+            <span class="error-message" id="register-password-error"></span>
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+        </form>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <div class="register-link">
+          <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </div>
+      </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
