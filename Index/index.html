@@ -31,7 +31,7 @@
                             class="fas fa-search"></i> </button> </div>
                 <form action="/search" method="get" id="searchForm" style="display: none;"></form>
                 <div class="navbar-actions">
-                    <a href="/wish"  class="action-icon" aria-label="Wishlist"> <img class="love_image"
+                    <a href="/wish" class="action-icon" aria-label="Wishlist"> <img class="love_image"
                             src="/images/love.png" alt="#wishlist"> <span class="badge"></span> </a>
                     <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class="cart_image"
                             src="/images/cart.png" alt="#cart"> <span class="badge">0</span> </a>
@@ -209,152 +209,312 @@
                 <h3 class="category-title">Sale</h3> <a href="/shop/sale" class="category-link">Shop Now</a>
             </div>
         </section>
+
         <section class="product-grid-section">
             <h2 class="section-title">Featured Products</h2>
             <div class="product-grid">
+
                 <div class="product-card" data-product-id="prod001">
-                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img
-                                src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod001">
+                            <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Shirt+1"
                                 alt="Stylish Casual Shirt" class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod001" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for
-                                Everyday Wear</a></h3>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod001">Stylish Casual Shirt</a>
+                        </h3>
                         <p class="product-price">$49.99</p>
                     </div>
                 </div>
+
                 <div class="product-card" data-product-id="prod002">
-                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img
-                                src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod002">
+                            <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Sneaker+1" alt="Running Sneakers"
                                 class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod002" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod002">Running Sneakers</a>
                         </h3>
                         <p class="product-price">$89.50 <span class="original-price">$110.00</span></p>
                     </div>
                 </div>
+
                 <div class="product-card" data-product-id="prod003">
-                    <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img
-                                src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod003">
+                            <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Dress+1"
                                 alt="Elegant Evening Dress" class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod003" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress -
-                                Special Occasion</a></h3>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod003">Elegant Evening Dress</a>
+                        </h3>
                         <p class="product-price">$120.00</p>
                     </div>
                 </div>
+
                 <div class="product-card" data-product-id="prod004">
-                    <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img
-                                src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod004">
+                            <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Watch+1"
                                 alt="Classic Leather Watch" class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod004" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with
-                                Strap</a></h3>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod004">Classic Leather Watch</a>
+                        </h3>
                         <p class="product-price">$199.99</p>
                     </div>
                 </div>
+
             </div>
         </section>
         <section class="product-grid-section">
-
             <div class="product-grid">
+
                 <div class="product-card" data-product-id="prod001">
-                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img
-                                src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod001">
+                            <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Shirt+1"
                                 alt="Stylish Casual Shirt" class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod001" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for
-                                Everyday Wear</a></h3>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod001">Stylish Casual Shirt</a>
+                        </h3>
                         <p class="product-price">$49.99</p>
                     </div>
                 </div>
+
                 <div class="product-card" data-product-id="prod002">
-                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img
-                                src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod002">
+                            <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Sneaker+1" alt="Running Sneakers"
                                 class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod002" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod002">Running Sneakers</a>
                         </h3>
                         <p class="product-price">$89.50 <span class="original-price">$110.00</span></p>
                     </div>
                 </div>
+
                 <div class="product-card" data-product-id="prod003">
-                    <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img
-                                src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod003">
+                            <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Dress+1"
                                 alt="Elegant Evening Dress" class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod003" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress -
-                                Special Occasion</a></h3>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod003">Elegant Evening Dress</a>
+                        </h3>
                         <p class="product-price">$120.00</p>
                     </div>
                 </div>
+
                 <div class="product-card" data-product-id="prod004">
-                    <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img
-                                src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4"
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod004">
+                            <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Watch+1"
                                 alt="Classic Leather Watch" class="product-image"
-                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';">
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
                         </a>
-                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
-                                    class="far fa-heart"></i></button> <button class="btn-icon"
-                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
-                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod004" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with
-                                Strap</a></h3>
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod004">Classic Leather Watch</a>
+                        </h3>
                         <p class="product-price">$199.99</p>
                     </div>
                 </div>
+
             </div>
         </section>
+        <section class="product-grid-section">
+            <div class="product-grid">
+
+                <div class="product-card" data-product-id="prod001">
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod001">
+                            <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Shirt+1"
+                                alt="Stylish Casual Shirt" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod001" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod001">Stylish Casual Shirt</a>
+                        </h3>
+                        <p class="product-price">$49.99</p>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="prod002">
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod002">
+                            <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Sneaker+1" alt="Running Sneakers"
+                                class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod002" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod002">Running Sneakers</a>
+                        </h3>
+                        <p class="product-price">$89.50 <span class="original-price">$110.00</span></p>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="prod003">
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod003">
+                            <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Dress+1"
+                                alt="Elegant Evening Dress" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod003" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod003">Elegant Evening Dress</a>
+                        </h3>
+                        <p class="product-price">$120.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="prod004">
+                    <div class="product-image-container">
+                        <a href="product-view.html?id=prod004">
+                            <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Watch+1"
+                                alt="Classic Leather Watch" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/cccccc/ffffff?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions">
+                            <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button>
+                            <button class="btn-icon" aria-label="Add to Cart"><i
+                                    class="fas fa-shopping-bag"></i></button>
+                            <a href="product-view.html?id=prod004" class="btn-icon" aria-label="Quick View">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a href="product-view.html?id=prod004">Classic Leather Watch</a>
+                        </h3>
+                        <p class="product-price">$199.99</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+       
     </main>
     <footer class="site-footer">
         <div class="footer-content">
@@ -406,7 +566,6 @@
             &copy; <span id="currentYear"></span> ShopWave. All Rights Reserved.
         </div>
     </footer>
-    <button onclick="window.location.href='/view-product'"> hii</button>
     <script src="src/js/ecommerce-logic.js"></script>
     <script>
         // Wrap all JS in a DOMContentLoaded listener to ensure HTML is ready

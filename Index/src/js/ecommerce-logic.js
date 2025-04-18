@@ -339,8 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
          // Handle "Quick View" click (Placeholder)
          if (target.closest('.btn-icon[aria-label="Quick View"]')) {
-            event.preventDefault();
-             alert('Quick View clicked! (Functionality not implemented yet)');
+           
          }
     }
 
