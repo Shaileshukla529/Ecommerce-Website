@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - ShopWave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/navbar.css">
+    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/profile.css">
+</head>
+<body>
+
+    <header class="navbar-container">
+        <div class="announcement-bar">MY PROFILE</div> <nav class="navbar">
+             <div class="navbar-top">
+                 <a href="index.html" class="navbar-brand">Shop<span>Wave</span></a>
+                 <div class="navbar-actions">
+                    <a href="index.html" class="action-icon" aria-label="Back to Home">
+                        <i class="fas fa-home"></i>
+                    </a>
+                 </div>
+             </div>
+         </nav>
+    </header>
+
+    <main class="profile-main">
+        <div class="profile-container">
+            <h1>My Profile</h1>
+            <div class="profile-card">
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Username:</span>
+                        <span id="profile-username" class="detail-value">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Email:</span>
+                        <span id="profile-email" class="detail-value">Loading...</span>
+                    </div>
+                    </div>
+                <button id="logout-btn" class="btn btn-logout">Logout</button>
+            </div>
+             <p id="profile-error" class="error-message" style="display: none;"></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+       <div class="footer-bottom">
+            &copy; <span id="currentYear"></span> ShopWave. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const usernameEl = document.getElementById('profile-username');
+            const emailEl = document.getElementById('profile-email');
+            const logoutBtn = document.getElementById('logout-btn');
+            const errorEl = document.getElementById('profile-error');
+            const currentYearSpan = document.getElementById('currentYear');
+
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            const userString = localStorage.getItem('user');
+            let user = null;
+
+            if (userString) {
+                try {
+                    user = JSON.parse(userString);
+                } catch (e) {
+                    console.error("Failed to parse user data:", e);
+                    // Clear invalid data and treat as logged out
+                    localStorage.removeItem('user');
+                    user = null;
+                }
+            }
+
+            if (user && user.username && user.email) {
+                // User is logged in and data is valid
+                if (usernameEl) usernameEl.textContent = user.username;
+                if (emailEl) emailEl.textContent = user.email;
+            } else {
+                // User is not logged in or data is invalid/missing
+                console.log("User not logged in or data missing, redirecting to login.");
+                 if (errorEl) {
+                    errorEl.textContent = 'You need to be logged in to view this page. Redirecting...';
+                    errorEl.style.display = 'block';
+                 }
+                 // Redirect to login page after a short delay
+                 setTimeout(() => {
+                     window.location.href = 'login.html';
+                 }, 2000);
+            }
+
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('user');
+                    // Optional: Dispatch an event to notify other parts (like index.html if open)
+                    window.dispatchEvent(new CustomEvent('loginStatusChanged'));
+                    console.log("User logged out.");
+                    window.location.href = 'index.html'; // Redirect to home page after logout
+                });
+            }
+        });
+    </script>
+</body>
+</html>
