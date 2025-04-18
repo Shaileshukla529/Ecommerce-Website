@@ -58,31 +58,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Core Cart Functions ---
-
     function renderCartItems() {
-        console.log("Rendering cart items...");
-        const cart = getCart();
-        cartItemsBody.innerHTML = ''; // Clear previous items
-
-        if (cart.length === 0) {
-            checkEmptyCart();
-            updateCartSummary(); // Ensure summary resets to $0.00
-            return;
+        console.log("Rendering cart items..."); // Good: Logs when it starts
+    
+        const cart = getCart(); // Get potentially filtered/validated cart data
+    
+        // Ensure cartItemsBody exists before manipulating
+        if (!cartItemsBody) {
+            console.error("Critical Error: cartItemsBody element not found!");
+            return; // Stop if the container isn't there
         }
-
+    
+        cartItemsBody.innerHTML = ''; // Clear previous items - Standard practice
+    
+        if (cart.length === 0) {
+            // Handle empty cart scenario
+            checkEmptyCart(); // Updates visibility of container/message
+            updateCartSummary(); // Ensure summary resets (e.g., to $0.00)
+            console.log("Cart is empty, rendering finished.");
+            return; // Stop processing
+        }
+    
+        // If cart has items, loop through them
         cart.forEach(item => {
+            // Validate item structure again (optional, belt-and-suspenders)
+            if (!item || typeof item.id === 'undefined' || typeof item.name === 'undefined' || isNaN(parseFloat(item.price)) || isNaN(parseInt(item.quantity, 10))) {
+                console.warn("Skipping rendering invalid item:", item);
+                return; // Skip this item using 'return' inside forEach
+            }
+    
             const price = parseFloat(item.price);
             const quantity = parseInt(item.quantity, 10);
+    
+            // Added check for invalid quantity/price after parsing, although getCart should filter
+            if (isNaN(price) || isNaN(quantity) || quantity <= 0) {
+                 console.warn(`Skipping item ${item.id} due to invalid price/quantity after parsing:`, { price, quantity });
+                 return; // Skip this item
+            }
+    
             const itemSubtotal = (price * quantity).toFixed(2);
-
+    
             const itemElement = document.createElement('div');
             itemElement.classList.add('cart-item');
-            itemElement.dataset.productId = item.id; // Use data attribute
-
+            itemElement.dataset.productId = item.id; // Use data attribute for ID
+    
             // Use template literal for cleaner HTML generation
+            // Ensure all classes match your CSS and event listener selectors
             itemElement.innerHTML = `
                 <div class="product-info">
-                    <img src="${item.image || 'https://placehold.co/80x80/eee/ccc?text=No+Img'}" alt="${item.name}" class="product-image" onerror="this.style.display='none'">
+                    <img src="${item.image || 'https://placehold.co/80x80/eee/ccc?text=No+Img'}" alt="${item.name}" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/80x80/eee/ccc?text=Error'; this.style.display='none';">  
                     <div class="product-details">
                         <h3 class="product-title">${item.name}</h3>
                         </div>
@@ -96,13 +120,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="item-subtotal">$${itemSubtotal}</div>
                 <button class="remove-item" aria-label="Remove item"><i class="fas fa-times"></i></button>
             `;
-            cartItemsBody.appendChild(itemElement);
+            // Added basic error handling for image loading in onerror
+    
+            cartItemsBody.appendChild(itemElement); // Add the new row to the body
         });
-
+    
+        // After rendering all items, update summary and check empty state
         updateCartSummary();
-        checkEmptyCart();
-    }
-
+        checkEmptyCart(); // Ensures main container is visible if items were added
+        console.log(`Finished rendering ${cart.length} cart items.`);
+    } // Removed the '--' which might have been accidentally added
     function updateItemQuantity(productId, newQuantity) {
         console.log(`Updating quantity for ${productId} to ${newQuantity}`);
         let cart = getCart();

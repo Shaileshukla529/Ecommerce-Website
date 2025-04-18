@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - ShopWave</title>
+    <link rel="stylesheet" href="src/css/navbar.css"> <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/cart.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Wishlist specific styles or overrides */
+        .cart-container .cart-items .cart-item .item-details {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            gap: 15px; /* Space between image and text */
+        }
+
+        .cart-container .cart-items .cart-item .item-details img {
+            max-width: 80px; /* Limit image size */
+            height: auto;
+            border: 1px solid #eee;
+            object-fit: cover; /* Ensure image covers the area nicely */
+        }
+
+        .cart-container .cart-items .cart-item .item-info {
+             flex-grow: 1; /* Allow text to take available space */
+        }
+         .cart-container .cart-items .cart-item .item-info .item-name {
+             margin-bottom: 5px;
+             font-weight: 600;
+             font-size: 0.95em;
+         }
+          .cart-container .cart-items .cart-item .item-info .item-name a {
+              color: #333;
+              text-decoration: none;
+          }
+           .cart-container .cart-items .cart-item .item-info .item-name a:hover {
+               text-decoration: underline;
+           }
+          .cart-container .cart-items .cart-item .item-info .item-price {
+             color: #555;
+             font-size: 0.9em;
+         }
+
+        .cart-container .cart-items .cart-item .item-actions {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center;
+            justify-content: center; /* Center vertically if needed */
+            gap: 8px; /* Space between buttons */
+             flex-basis: 15%; /* Match header */
+             padding: 0 10px; /* Add some padding */
+        }
+
+         .cart-container .cart-items .cart-item .item-actions .btn-add-to-cart {
+             padding: 6px 12px;
+             font-size: 0.9em;
+             background-color: #28a745; /* Green for Add to Cart */
+             color: white;
+             border: none;
+             border-radius: 4px;
+             cursor: pointer;
+             transition: background-color 0.2s ease;
+             width: 110px; /* Consistent width */
+             text-align: center;
+             white-space: nowrap; /* Prevent wrapping */
+         }
+         .cart-container .cart-items .cart-item .item-actions .btn-add-to-cart:hover {
+             background-color: #218838;
+         }
+
+        .cart-container .cart-items .cart-item .item-actions .remove-item {
+             background: none;
+             border: none;
+             color: #dc3545; /* Red for remove */
+             font-size: 0.9em;
+             cursor: pointer;
+             padding: 0; /* Remove padding for text button feel */
+             margin-top: 5px; /* Space above remove link */
+         }
+          .cart-container .cart-items .cart-item .item-actions .remove-item:hover {
+              text-decoration: underline;
+          }
+
+        /* Adjust header for new actions column */
+         .cart-header .header-actions {
+            flex-basis: 15%; /* Adjust based on content */
+            text-align: center;
+            padding: 0 10px;
+         }
+         .cart-header .header-product {
+             flex-basis: 55%; /* Give more space to product */
+             padding-left: 15px;
+         }
+          .cart-header .header-price {
+             flex-basis: 30%; /* Adjust space */
+             text-align: center;
+         }
+          .cart-header .header-remove { display: none; } /* Hide original remove header */
+
+        /* Ensure item rows align with headers */
+         .cart-container .cart-items .cart-item {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             padding: 15px 0;
+             border-bottom: 1px solid #eee;
+         }
+           .cart-container .cart-items .cart-item .item-details {
+             flex-basis: 55%; /* Match header */
+             padding-left: 15px;
+         }
+           .cart-container .cart-items .cart-item .item-price-col {
+             flex-basis: 30%; /* Match header */
+             text-align: center;
+             font-weight: 500;
+             color: #333;
+         }
+           /* item-actions already defined with flex-basis: 15% */
+
+
+        /* Empty Wishlist styles */
+        .empty-wishlist { /* Renamed from empty-cart */
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 50px 20px;
+            border: 1px dashed #ddd;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .empty-wishlist i {
+            font-size: 3em;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .empty-wishlist h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        .empty-wishlist p {
+            margin-bottom: 25px;
+            color: #777;
+        }
+
+        .empty-wishlist .start-shopping {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+         .empty-wishlist .start-shopping:hover {
+             background-color: #0056b3;
+         }
+          .container {
+             max-width: 1200px;
+             margin: 20px auto;
+             padding: 0 15px;
+         }
+          .page-title {
+             margin-bottom: 25px;
+             padding-bottom: 15px;
+             border-bottom: 1px solid #eee;
+         }
+          .page-title h1 {
+             font-size: 1.8em;
+             font-weight: 600;
+             margin-bottom: 5px;
+          }
+          .breadcrumb {
+             font-size: 0.9em;
+             color: #777;
+         }
+          .breadcrumb a {
+             color: #007bff;
+             text-decoration: none;
+          }
+          .breadcrumb a:hover {
+              text-decoration: underline;
+          }
+          .breadcrumb .active {
+              color: #555;
+          }
+          .breadcrumb-item::after {
+              content: '/';
+              margin: 0 5px;
+              color: #ccc;
+          }
+          .breadcrumb-item:last-child::after {
+              content: ''; /* No slash after the last item */
+          }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar-container">
+        <nav class="navbar">
+            <div class="navbar-top">
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu"> <i class="fas fa-bars"></i>
+                </button>
+                <a href="/" class="navbar-brand">Shop<span>Wave</span></a>
+                <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..."
+                        name="query"> <button type="submit" form="searchForm" class="search-btn" aria-label="Search"> <i
+                            class="fas fa-search"></i> </button> </div>
+                <form action="/search" method="get" id="searchForm" style="display: none;"></form>
+                <div class="navbar-actions">
+                    <a href="/wish" class="action-icon" aria-label="Wishlist"> <img class="love_image"
+                            src="/images/love.png" alt="#wishlist"> <span class="badge">2</span> </a>
+                    <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class="cart_image"
+                            src="/images/cart.png" alt="#cart"> <span class="badge">0</span> </a>
+                    <button id="loginSignupBtn" onclick="window.location.href='login.html'" class="action-icon"
+                        aria-label="Login or Sign up"> <img class="user_image" src="/images/user (1).png" alt="#user">
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-bottom" id="mobileMenu">
+                <div class="mobile-search-container">
+                    <div class="navbar-search"> <input type="text" class="search-input"
+                            placeholder="Search for products..." name="mobile_query"> <button type="submit"
+                            form="mobileSearchForm" class="search-btn" aria-label="Search"> <i
+                                class="fas fa-search"></i> </button> </div>
+                </div>
+                <form action="/search" method="get" id="mobileSearchForm" style="display: none;"></form>
+                <ul class="navbar-menu">
+                    <li class="menu-item"> <a href="/" class="menu-link">Home</a> </li>
+                    <li class="menu-item mega"> <a href="/shop/women" class="menu-link dropdown-toggle">Women</a>
+                        <div class="mega-dropdown">
+                            <div class="mega-column">
+                                <h3 class="mega-title">Clothing</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/women/new-arrivals" class="mega-link">New Arrivals</a></li>
+                                    <li><a href="/shop/women/dresses" class="mega-link">Dresses</a></li>
+                                    <li><a href="/shop/women/tops" class="mega-link">Tops</a></li>
+                                    <li><a href="/shop/women/sweaters" class="mega-link">Sweaters</a></li>
+                                    <li><a href="/shop/women/jeans" class="mega-link">Jeans</a></li>
+                                    <li><a href="/shop/women/activewear" class="mega-link">Activewear</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Accessories</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/women/jewelry" class="mega-link">Jewelry</a></li>
+                                    <li><a href="/shop/women/bags" class="mega-link">Bags</a></li>
+                                    <li><a href="/shop/women/scarves" class="mega-link">Scarves</a></li>
+                                    <li><a href="/shop/women/hats" class="mega-link">Hats</a></li>
+                                    <li><a href="/shop/women/belts" class="mega-link">Belts</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Shoes</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/women/boots" class="mega-link">Boots</a></li>
+                                    <li><a href="/shop/women/heels" class="mega-link">Heels</a></li>
+                                    <li><a href="/shop/women/flats" class="mega-link">Flats</a></li>
+                                    <li><a href="/shop/women/sneakers" class="mega-link">Sneakers</a></li>
+                                    <li><a href="/shop/women/sandals" class="mega-link">Sandals</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item mega"> <a href="/shop/men" class="menu-link dropdown-toggle">Men</a>
+                        <div class="mega-dropdown">
+                            <div class="mega-column">
+                                <h3 class="mega-title">Clothing</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/men/new-arrivals" class="mega-link">New Arrivals</a></li>
+                                    <li><a href="/shop/men/t-shirts" class="mega-link">T-Shirts</a></li>
+                                    <li><a href="/shop/men/shirts" class="mega-link">Shirts</a></li>
+                                    <li><a href="/shop/men/pants" class="mega-link">Pants</a></li>
+                                    <li><a href="/shop/men/jeans" class="mega-link">Jeans</a></li>
+                                    <li><a href="/shop/men/activewear" class="mega-link">Activewear</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Accessories</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/men/watches" class="mega-link">Watches</a></li>
+                                    <li><a href="/shop/men/belts" class="mega-link">Belts</a></li>
+                                    <li><a href="/shop/men/wallets" class="mega-link">Wallets</a></li>
+                                    <li><a href="/shop/men/ties" class="mega-link">Ties</a></li>
+                                    <li><a href="/shop/men/hats" class="mega-link">Hats</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Shoes</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/men/boots" class="mega-link">Boots</a></li>
+                                    <li><a href="/shop/men/sneakers" class="mega-link">Sneakers</a></li>
+                                    <li><a href="/shop/men/dress-shoes" class="mega-link">Dress Shoes</a></li>
+                                    <li><a href="/shop/men/loafers" class="mega-link">Loafers</a></li>
+                                    <li><a href="/shop/men/sandals" class="mega-link">Sandals</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item"> <a href="/shop/accessories" class="menu-link dropdown-toggle">Accessories</a>
+                        <div class="dropdown"> <a href="/shop/accessories/jewelry" class="dropdown-link">Jewelry</a> <a
+                                href="/shop/accessories/watches" class="dropdown-link">Watches</a> <a
+                                href="/shop/accessories/bags" class="dropdown-link">Bags & Purses</a> <a
+                                href="/shop/accessories/sunglasses" class="dropdown-link">Sunglasses</a> <a
+                                href="/shop/accessories/hats" class="dropdown-link">Hats & Caps</a> <a
+                                href="/shop/accessories/belts" class="dropdown-link">Belts</a> </div>
+                    </li>
+                    <li class="menu-item"> <a href="/contact" class="menu-link">Contact</a> </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="page-title">
+            <h1>Your Wishlist</h1>
+            <div class="breadcrumb">
+                <span class="breadcrumb-item"><a href="index.html">Home</a></span>
+                <span class="breadcrumb-item active">Wishlist</span>
+            </div>
+        </div>
+
+        <div class="cart-container" id="wishlist-container"> <div class="cart-items">
+                <div class="cart-header">
+                    <div class="header-product">Product</div>
+                    <div class="header-price">Price</div>
+                    <div class="header-actions">Actions</div> </div>
+                <div id="wishlist-items-body">
+                    </div>
+
+                <div class="cart-footer">
+                    <a href="/shop" class="continue-shopping"> <i class="fas fa-long-arrow-alt-left"></i>
+                        Continue Shopping
+                    </a>
+                    <div class="cart-actions">
+                        <button id="clear-wishlist-btn" class="clear-cart btn btn-outline">Clear Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-wishlist" id="empty-wishlist-message">
+            <i class="fas fa-heart"></i> <h2>Your Wishlist is Empty</h2>
+            <p>Add items you love to your wishlist to keep track of them!</p>
+            <a href="/shop" class="start-shopping">Start Shopping</a>
+        </div>
+
+        <div class="recommended">
+            </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="/shop/women">Women</a></li>
+                    <li><a href="/shop/men">Men</a></li>
+                    <li><a href="/shop/accessories">Accessories</a></li>
+                    <li><a href="/shop/sale">Sale</a></li>
+                    <li><a href="/shop/new-arrivals">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="/customer-service">Customer Service</a></li>
+                    <li><a href="/shipping">Shipping & Returns</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/track-order">Track Order</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect With Us</h4>
+                <p>Follow us on social media for updates and promotions.</p>
+                <div class="footer-socials">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i
+                            class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="currentYear"></span> ShopWave. All Rights Reserved.
+        </div>
+    </footer>
+ <script src="src/js/ecommerce-logic.js"></script>
+</body>
+
+</html>

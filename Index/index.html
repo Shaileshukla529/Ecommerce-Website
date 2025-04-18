@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,24 +19,115 @@
 </head>
 <div>
 
-    <header class="navbar-container"> <div class="announcement-bar"> FREE SHIPPING ON ORDERS OVER $50 | EASY RETURNS </div>
+    <header class="navbar-container">
+        <div class="announcement-bar"> FREE SHIPPING ON ORDERS OVER $50 | EASY RETURNS </div>
         <nav class="navbar">
             <div class="navbar-top">
-                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu"> <i class="fas fa-bars"></i> </button>
-                <a href="/" class="navbar-brand">Shop<span>Wave</span></a> <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..." name="query"> <button type="submit" form="searchForm" class="search-btn" aria-label="Search"> <i class="fas fa-search"></i> </button> </div>
-                <form action="/search" method="get" id="searchForm" style="display: none;"></form> <div class="navbar-actions">
-                    <a href="/wishlist" class="action-icon" aria-label="Wishlist"> <img class="love_image" src="/images/love.png" alt="#wishlist"> <span class="badge">2</span> </a>
-                    <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class ="cart_image" src="/images/cart.png" alt="#cart"> <span class="badge">0</span> </a>
-                    <button id="loginSignupBtn" onclick="window.location.href='login.html'" class="action-icon" aria-label="Login or Sign up"> <img class="user_image" src="/images/user (1).png" alt="#user"> </button>
-                 </div>
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu"> <i class="fas fa-bars"></i>
+                </button>
+                <a href="/" class="navbar-brand">Shop<span>Wave</span></a>
+                <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..."
+                        name="query"> <button type="submit" form="searchForm" class="search-btn" aria-label="Search"> <i
+                            class="fas fa-search"></i> </button> </div>
+                <form action="/search" method="get" id="searchForm" style="display: none;"></form>
+                <div class="navbar-actions">
+                    <a href="/wish"  class="action-icon" aria-label="Wishlist"> <img class="love_image"
+                            src="/images/love.png" alt="#wishlist"> <span class="badge"></span> </a>
+                    <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class="cart_image"
+                            src="/images/cart.png" alt="#cart"> <span class="badge">0</span> </a>
+                    <button id="loginSignupBtn" onclick="window.location.href='login.html'" class="action-icon"
+                        aria-label="Login or Sign up"> <img class="user_image" src="/images/user (1).png" alt="#user">
+                    </button>
+                </div>
             </div>
             <div class="navbar-bottom" id="mobileMenu">
-                <div class="mobile-search-container"> <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..." name="mobile_query"> <button type="submit" form="mobileSearchForm" class="search-btn" aria-label="Search"> <i class="fas fa-search"></i> </button> </div> </div>
-                <form action="/search" method="get" id="mobileSearchForm" style="display: none;"></form> <ul class="navbar-menu">
+                <div class="mobile-search-container">
+                    <div class="navbar-search"> <input type="text" class="search-input"
+                            placeholder="Search for products..." name="mobile_query"> <button type="submit"
+                            form="mobileSearchForm" class="search-btn" aria-label="Search"> <i
+                                class="fas fa-search"></i> </button> </div>
+                </div>
+                <form action="/search" method="get" id="mobileSearchForm" style="display: none;"></form>
+                <ul class="navbar-menu">
                     <li class="menu-item"> <a href="/" class="menu-link">Home</a> </li>
-                    <li class="menu-item mega"> <a href="/shop/women" class="menu-link dropdown-toggle">Women</a> <div class="mega-dropdown"> <div class="mega-column"> <h3 class="mega-title">Clothing</h3> <ul class="mega-links"> <li><a href="/shop/women/new-arrivals" class="mega-link">New Arrivals</a></li> <li><a href="/shop/women/dresses" class="mega-link">Dresses</a></li> <li><a href="/shop/women/tops" class="mega-link">Tops</a></li> <li><a href="/shop/women/sweaters" class="mega-link">Sweaters</a></li> <li><a href="/shop/women/jeans" class="mega-link">Jeans</a></li> <li><a href="/shop/women/activewear" class="mega-link">Activewear</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Accessories</h3> <ul class="mega-links"> <li><a href="/shop/women/jewelry" class="mega-link">Jewelry</a></li> <li><a href="/shop/women/bags" class="mega-link">Bags</a></li> <li><a href="/shop/women/scarves" class="mega-link">Scarves</a></li> <li><a href="/shop/women/hats" class="mega-link">Hats</a></li> <li><a href="/shop/women/belts" class="mega-link">Belts</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Shoes</h3> <ul class="mega-links"> <li><a href="/shop/women/boots" class="mega-link">Boots</a></li> <li><a href="/shop/women/heels" class="mega-link">Heels</a></li> <li><a href="/shop/women/flats" class="mega-link">Flats</a></li> <li><a href="/shop/women/sneakers" class="mega-link">Sneakers</a></li> <li><a href="/shop/women/sandals" class="mega-link">Sandals</a></li> </ul> </div> </div> </li>
-                    <li class="menu-item mega"> <a href="/shop/men" class="menu-link dropdown-toggle">Men</a> <div class="mega-dropdown"> <div class="mega-column"> <h3 class="mega-title">Clothing</h3> <ul class="mega-links"> <li><a href="/shop/men/new-arrivals" class="mega-link">New Arrivals</a></li> <li><a href="/shop/men/t-shirts" class="mega-link">T-Shirts</a></li> <li><a href="/shop/men/shirts" class="mega-link">Shirts</a></li> <li><a href="/shop/men/pants" class="mega-link">Pants</a></li> <li><a href="/shop/men/jeans" class="mega-link">Jeans</a></li> <li><a href="/shop/men/activewear" class="mega-link">Activewear</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Accessories</h3> <ul class="mega-links"> <li><a href="/shop/men/watches" class="mega-link">Watches</a></li> <li><a href="/shop/men/belts" class="mega-link">Belts</a></li> <li><a href="/shop/men/wallets" class="mega-link">Wallets</a></li> <li><a href="/shop/men/ties" class="mega-link">Ties</a></li> <li><a href="/shop/men/hats" class="mega-link">Hats</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Shoes</h3> <ul class="mega-links"> <li><a href="/shop/men/boots" class="mega-link">Boots</a></li> <li><a href="/shop/men/sneakers" class="mega-link">Sneakers</a></li> <li><a href="/shop/men/dress-shoes" class="mega-link">Dress Shoes</a></li> <li><a href="/shop/men/loafers" class="mega-link">Loafers</a></li> <li><a href="/shop/men/sandals" class="mega-link">Sandals</a></li> </ul> </div> </div> </li>
-                    <li class="menu-item"> <a href="/shop/accessories" class="menu-link dropdown-toggle">Accessories</a> <div class="dropdown"> <a href="/shop/accessories/jewelry" class="dropdown-link">Jewelry</a> <a href="/shop/accessories/watches" class="dropdown-link">Watches</a> <a href="/shop/accessories/bags" class="dropdown-link">Bags & Purses</a> <a href="/shop/accessories/sunglasses" class="dropdown-link">Sunglasses</a> <a href="/shop/accessories/hats" class="dropdown-link">Hats & Caps</a> <a href="/shop/accessories/belts" class="dropdown-link">Belts</a> </div> </li>
+                    <li class="menu-item mega"> <a href="/shop/women" class="menu-link dropdown-toggle">Women</a>
+                        <div class="mega-dropdown">
+                            <div class="mega-column">
+                                <h3 class="mega-title">Clothing</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/women/new-arrivals" class="mega-link">New Arrivals</a></li>
+                                    <li><a href="/shop/women/dresses" class="mega-link">Dresses</a></li>
+                                    <li><a href="/shop/women/tops" class="mega-link">Tops</a></li>
+                                    <li><a href="/shop/women/sweaters" class="mega-link">Sweaters</a></li>
+                                    <li><a href="/shop/women/jeans" class="mega-link">Jeans</a></li>
+                                    <li><a href="/shop/women/activewear" class="mega-link">Activewear</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Accessories</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/women/jewelry" class="mega-link">Jewelry</a></li>
+                                    <li><a href="/shop/women/bags" class="mega-link">Bags</a></li>
+                                    <li><a href="/shop/women/scarves" class="mega-link">Scarves</a></li>
+                                    <li><a href="/shop/women/hats" class="mega-link">Hats</a></li>
+                                    <li><a href="/shop/women/belts" class="mega-link">Belts</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Shoes</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/women/boots" class="mega-link">Boots</a></li>
+                                    <li><a href="/shop/women/heels" class="mega-link">Heels</a></li>
+                                    <li><a href="/shop/women/flats" class="mega-link">Flats</a></li>
+                                    <li><a href="/shop/women/sneakers" class="mega-link">Sneakers</a></li>
+                                    <li><a href="/shop/women/sandals" class="mega-link">Sandals</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item mega"> <a href="/shop/men" class="menu-link dropdown-toggle">Men</a>
+                        <div class="mega-dropdown">
+                            <div class="mega-column">
+                                <h3 class="mega-title">Clothing</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/men/new-arrivals" class="mega-link">New Arrivals</a></li>
+                                    <li><a href="/shop/men/t-shirts" class="mega-link">T-Shirts</a></li>
+                                    <li><a href="/shop/men/shirts" class="mega-link">Shirts</a></li>
+                                    <li><a href="/shop/men/pants" class="mega-link">Pants</a></li>
+                                    <li><a href="/shop/men/jeans" class="mega-link">Jeans</a></li>
+                                    <li><a href="/shop/men/activewear" class="mega-link">Activewear</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Accessories</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/men/watches" class="mega-link">Watches</a></li>
+                                    <li><a href="/shop/men/belts" class="mega-link">Belts</a></li>
+                                    <li><a href="/shop/men/wallets" class="mega-link">Wallets</a></li>
+                                    <li><a href="/shop/men/ties" class="mega-link">Ties</a></li>
+                                    <li><a href="/shop/men/hats" class="mega-link">Hats</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Shoes</h3>
+                                <ul class="mega-links">
+                                    <li><a href="/shop/men/boots" class="mega-link">Boots</a></li>
+                                    <li><a href="/shop/men/sneakers" class="mega-link">Sneakers</a></li>
+                                    <li><a href="/shop/men/dress-shoes" class="mega-link">Dress Shoes</a></li>
+                                    <li><a href="/shop/men/loafers" class="mega-link">Loafers</a></li>
+                                    <li><a href="/shop/men/sandals" class="mega-link">Sandals</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item"> <a href="/shop/accessories" class="menu-link dropdown-toggle">Accessories</a>
+                        <div class="dropdown"> <a href="/shop/accessories/jewelry" class="dropdown-link">Jewelry</a> <a
+                                href="/shop/accessories/watches" class="dropdown-link">Watches</a> <a
+                                href="/shop/accessories/bags" class="dropdown-link">Bags & Purses</a> <a
+                                href="/shop/accessories/sunglasses" class="dropdown-link">Sunglasses</a> <a
+                                href="/shop/accessories/hats" class="dropdown-link">Hats & Caps</a> <a
+                                href="/shop/accessories/belts" class="dropdown-link">Belts</a> </div>
+                    </li>
                     <li class="menu-item"> <a href="/contact" class="menu-link">Contact</a> </li>
                 </ul>
             </div>
@@ -45,62 +137,226 @@
 
         <section class="hero-container">
             <div class="hero-slider">
-                <div class="hero-slide active" id="slide1"> <div class="hero-content"> <h5 class="hero-subtitle">Spring Collection 2025</h5> <h1 class="hero-title">Discover Your<br>New Style</h1> <p class="hero-description">Explore our latest arrivals designed for modern lifestyles.</p> <div class="hero-buttons"> <a href="/shop/women" class="btn-primary">Shop Women</a> <a href="/shop/men" class="btn-secondary">Shop Men</a> </div> </div> <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')"></div> </div>
-                <div class="hero-slide" id="slide2"> <div class="hero-content"> <h5 class="hero-subtitle">Limited Edition</h5> <h1 class="hero-title">Summer<br>Essentials</h1> <p class="hero-description">Quality pieces crafted for your vacation needs.</p> <div class="hero-buttons"> <a href="/shop/featured" class="btn-primary">Shop Collection</a> <a href="/about" class="btn-secondary">Learn More</a> </div> </div> <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')"></div> </div>
-                <div class="hero-slide" id="slide3"> <div class="hero-content"> <h5 class="hero-subtitle">Special Offer</h5> <h1 class="hero-title">Up to 40% Off<br>Sale Items</h1> <p class="hero-description">Limited time offers on select styles and accessories.</p> <div class="hero-buttons"> <a href="/shop/sale" class="btn-primary">Shop Sale</a> <a href="/promotions" class="btn-secondary">View Details</a> </div> </div> <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1551488831-00ddcb6ac6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')"></div> </div>
+                <div class="hero-slide active" id="slide1">
+                    <div class="hero-content">
+                        <h5 class="hero-subtitle">Spring Collection 2025</h5>
+                        <h1 class="hero-title">Discover Your<br>New Style</h1>
+                        <p class="hero-description">Explore our latest arrivals designed for modern lifestyles.</p>
+                        <div class="hero-buttons"> <a href="/shop/women" class="btn-primary">Shop Women</a> <a
+                                href="/shop/men" class="btn-secondary">Shop Men</a> </div>
+                    </div>
+                    <div class="hero-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')">
+                    </div>
+                </div>
+                <div class="hero-slide" id="slide2">
+                    <div class="hero-content">
+                        <h5 class="hero-subtitle">Limited Edition</h5>
+                        <h1 class="hero-title">Summer<br>Essentials</h1>
+                        <p class="hero-description">Quality pieces crafted for your vacation needs.</p>
+                        <div class="hero-buttons"> <a href="/shop/featured" class="btn-primary">Shop Collection</a> <a
+                                href="/about" class="btn-secondary">Learn More</a> </div>
+                    </div>
+                    <div class="hero-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')">
+                    </div>
+                </div>
+                <div class="hero-slide" id="slide3">
+                    <div class="hero-content">
+                        <h5 class="hero-subtitle">Special Offer</h5>
+                        <h1 class="hero-title">Up to 40% Off<br>Sale Items</h1>
+                        <p class="hero-description">Limited time offers on select styles and accessories.</p>
+                        <div class="hero-buttons"> <a href="/shop/sale" class="btn-primary">Shop Sale</a> <a
+                                href="/promotions" class="btn-secondary">View Details</a> </div>
+                    </div>
+                    <div class="hero-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1551488831-00ddcb6ac6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')">
+                    </div>
+                </div>
             </div>
-            <div class="slider-controls"> <div class="slider-dots"> <span class="dot active" data-slide="slide1"></span> <span class="dot" data-slide="slide2"></span> <span class="dot" data-slide="slide3"></span> </div> <div class="slider-arrows"> <button class="arrow-prev" aria-label="Previous slide"> <i class="fas fa-chevron-left"></i> </button> <button class="arrow-next" aria-label="Next slide"> <i class="fas fa-chevron-right"></i> </button> </div> </div>
+            <div class="slider-controls">
+                <div class="slider-dots"> <span class="dot active" data-slide="slide1"></span> <span class="dot"
+                        data-slide="slide2"></span> <span class="dot" data-slide="slide3"></span> </div>
+                <div class="slider-arrows"> <button class="arrow-prev" aria-label="Previous slide"> <i
+                            class="fas fa-chevron-left"></i> </button> <button class="arrow-next"
+                        aria-label="Next slide"> <i class="fas fa-chevron-right"></i> </button> </div>
+            </div>
         </section>
         <section class="featured-categories">
-            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Women</h3> <a href="/shop/women" class="category-link">Shop Now</a> </div>
-            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1610384104075-e05c8cf20003?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Men</h3> <a href="/shop/men" class="category-link">Shop Now</a> </div>
-            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Accessories</h3> <a href="/shop/accessories" class="category-link">Shop Now</a> </div>
-            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Sale</h3> <a href="/shop/sale" class="category-link">Shop Now</a> </div>
+            <div class="category-card">
+                <div class="category-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')">
+                </div>
+                <h3 class="category-title">Women</h3> <a href="/shop/women" class="category-link">Shop Now</a>
+            </div>
+            <div class="category-card">
+                <div class="category-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1610384104075-e05c8cf20003?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')">
+                </div>
+                <h3 class="category-title">Men</h3> <a href="/shop/men" class="category-link">Shop Now</a>
+            </div>
+            <div class="category-card">
+                <div class="category-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')">
+                </div>
+                <h3 class="category-title">Accessories</h3> <a href="/shop/accessories" class="category-link">Shop
+                    Now</a>
+            </div>
+            <div class="category-card">
+                <div class="category-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')">
+                </div>
+                <h3 class="category-title">Sale</h3> <a href="/shop/sale" class="category-link">Shop Now</a>
+            </div>
         </section>
         <section class="product-grid-section">
             <h2 class="section-title">Featured Products</h2>
             <div class="product-grid">
                 <div class="product-card" data-product-id="prod001">
-                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1" alt="Stylish Casual Shirt" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for Everyday Wear</a></h3> <p class="product-price">$49.99</p> </div>
+                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img
+                                src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1"
+                                alt="Stylish Casual Shirt" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for
+                                Everyday Wear</a></h3>
+                        <p class="product-price">$49.99</p>
+                    </div>
                 </div>
                 <div class="product-card" data-product-id="prod002">
-                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a></h3> <p class="product-price">$89.50 <span class="original-price">$110.00</span></p> </div>
+                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img
+                                src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers"
+                                class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a>
+                        </h3>
+                        <p class="product-price">$89.50 <span class="original-price">$110.00</span></p>
+                    </div>
                 </div>
                 <div class="product-card" data-product-id="prod003">
-                     <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3" alt="Elegant Evening Dress" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress - Special Occasion</a></h3> <p class="product-price">$120.00</p> </div>
+                    <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img
+                                src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3"
+                                alt="Elegant Evening Dress" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress -
+                                Special Occasion</a></h3>
+                        <p class="product-price">$120.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-product-id="prod004">
-                     <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4" alt="Classic Leather Watch" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with Strap</a></h3> <p class="product-price">$199.99</p> </div>
+                    <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img
+                                src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4"
+                                alt="Classic Leather Watch" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with
+                                Strap</a></h3>
+                        <p class="product-price">$199.99</p>
+                    </div>
                 </div>
             </div>
         </section>
         <section class="product-grid-section">
-            
+
             <div class="product-grid">
                 <div class="product-card" data-product-id="prod001">
-                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1" alt="Stylish Casual Shirt" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for Everyday Wear</a></h3> <p class="product-price">$49.99</p> </div>
+                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img
+                                src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1"
+                                alt="Stylish Casual Shirt" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for
+                                Everyday Wear</a></h3>
+                        <p class="product-price">$49.99</p>
+                    </div>
                 </div>
                 <div class="product-card" data-product-id="prod002">
-                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a></h3> <p class="product-price">$89.50 <span class="original-price">$110.00</span></p> </div>
+                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img
+                                src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers"
+                                class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a>
+                        </h3>
+                        <p class="product-price">$89.50 <span class="original-price">$110.00</span></p>
+                    </div>
                 </div>
                 <div class="product-card" data-product-id="prod003">
-                     <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3" alt="Elegant Evening Dress" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress - Special Occasion</a></h3> <p class="product-price">$120.00</p> </div>
+                    <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img
+                                src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3"
+                                alt="Elegant Evening Dress" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress -
+                                Special Occasion</a></h3>
+                        <p class="product-price">$120.00</p>
+                    </div>
                 </div>
                 <div class="product-card" data-product-id="prod004">
-                     <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4" alt="Classic Leather Watch" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
-                    <div class="product-info"> <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with Strap</a></h3> <p class="product-price">$199.99</p> </div>
+                    <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img
+                                src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4"
+                                alt="Classic Leather Watch" class="product-image"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';">
+                        </a>
+                        <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i
+                                    class="far fa-heart"></i></button> <button class="btn-icon"
+                                aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button
+                                class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with
+                                Strap</a></h3>
+                        <p class="product-price">$199.99</p>
+                    </div>
                 </div>
             </div>
         </section>
-        </main> 
-        <footer class="site-footer">
+    </main>
+    <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-column">
                 <h4>Shop</h4>
@@ -131,25 +387,30 @@
                     <li><a href="/terms">Terms & Conditions</a></li>
                 </ul>
             </div>
-             <div class="footer-column">
+            <div class="footer-column">
                 <h4>Connect With Us</h4>
                 <p>Follow us on social media for updates and promotions.</p>
                 <div class="footer-socials">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i
+                            class="fab fa-pinterest-p"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             &copy; <span id="currentYear"></span> ShopWave. All Rights Reserved.
         </div>
-    </footer> 
-    <button onclick="window.location.href = 'Cart.html' ">HIIII</button>   
+    </footer>
+    <button onclick="window.location.href='/view-product'"> hii</button>
+    <script src="src/js/ecommerce-logic.js"></script>
     <script>
         // Wrap all JS in a DOMContentLoaded listener to ensure HTML is ready
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
 
             // ============================================= //
             // JS Section Start: Variable Declarations     //
@@ -187,7 +448,7 @@
             // JS Section Start: General Utility           //
             // ============================================= //
             if (currentYearSpan) {
-                 currentYearSpan.textContent = new Date().getFullYear();
+                currentYearSpan.textContent = new Date().getFullYear();
             }
             // ============================================= //
             // JS Section End: General Utility             //
@@ -215,8 +476,8 @@
             };
 
             const closeAllMobileDropdowns = () => {
-                 document.querySelectorAll('.navbar-menu .dropdown.show-dropdown, .navbar-menu .mega-dropdown.show-dropdown').forEach(openDropdown => openDropdown.classList.remove('show-dropdown'));
-                 document.querySelectorAll('.navbar-menu .menu-link.dropdown-toggle.open').forEach(toggle => toggle.classList.remove('open'));
+                document.querySelectorAll('.navbar-menu .dropdown.show-dropdown, .navbar-menu .mega-dropdown.show-dropdown').forEach(openDropdown => openDropdown.classList.remove('show-dropdown'));
+                document.querySelectorAll('.navbar-menu .menu-link.dropdown-toggle.open').forEach(toggle => toggle.classList.remove('open'));
             }
 
             const toggleMobileMenu = () => {
@@ -235,7 +496,7 @@
                     const dropdown = parentMenuItem.querySelector('.dropdown') || parentMenuItem.querySelector('.mega-dropdown');
                     if (!dropdown) return;
                     const isOpening = !dropdown.classList.contains('show-dropdown');
-                    if(isOpening) closeAllMobileDropdowns(); // Close others if opening a new one
+                    if (isOpening) closeAllMobileDropdowns(); // Close others if opening a new one
                     dropdown.classList.toggle('show-dropdown');
                     e.currentTarget.classList.toggle('open', isOpening);
                 }
@@ -292,11 +553,11 @@
             };
 
             const switchToLogin = (e) => {
-                 e.preventDefault();
-                 if (!loginContainer || !registerContainer) return;
-                 clearFormState();
-                 registerContainer.style.display = 'none';
-                 loginContainer.style.display = 'block';
+                e.preventDefault();
+                if (!loginContainer || !registerContainer) return;
+                clearFormState();
+                registerContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
             };
 
             // Modal Event Listeners
@@ -329,7 +590,7 @@
                 });
             }
 
-             if (registerForm) {
+            if (registerForm) {
                 registerForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     clearFormState();
@@ -352,14 +613,14 @@
                         isValid = false;
                     }
                     // Example: Basic password length
-                     if (password.length < 8) {
-                         showNotification(registerNotification, 'Password must be at least 8 characters.', 'error');
-                         const passwordErrorSpan = document.getElementById('register-password-error');
-                          if (passwordErrorSpan) {
+                    if (password.length < 8) {
+                        showNotification(registerNotification, 'Password must be at least 8 characters.', 'error');
+                        const passwordErrorSpan = document.getElementById('register-password-error');
+                        if (passwordErrorSpan) {
                             passwordErrorSpan.textContent = 'Password must be at least 8 characters.';
                         }
-                         isValid = false;
-                     }
+                        isValid = false;
+                    }
                     // Add other validations (email format, etc.)
 
                     if (isValid) {
@@ -393,7 +654,7 @@
                         const slideIndex = Array.from(slides).findIndex(slide => slide.id === slideId);
                         if (slideIndex !== -1 && slideIndex !== currentSlide) { // Only act if different slide
                             showSlide(slideIndex);
-                             resetAutoplay(); // Reset timer on manual interaction
+                            resetAutoplay(); // Reset timer on manual interaction
                         }
                     });
                 });
@@ -402,11 +663,11 @@
                 if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
 
                 // Pause autoplay on hover
-                 const sliderElement = document.querySelector('.hero-slider');
-                 if (sliderElement) {
-                     sliderElement.addEventListener('mouseenter', pauseAutoplay);
-                     sliderElement.addEventListener('mouseleave', startAutoplay);
-                 }
+                const sliderElement = document.querySelector('.hero-slider');
+                if (sliderElement) {
+                    sliderElement.addEventListener('mouseenter', pauseAutoplay);
+                    sliderElement.addEventListener('mouseleave', startAutoplay);
+                }
             }
 
             const showSlide = (index) => {
@@ -445,14 +706,6 @@
             // JS Section End: Hero Slider Functionality   //
             // ============================================= //
 
-// ============================================= //
-// JS Section Start: Product Card Actions        //
-// ============================================= //
- 
-// ============================================= //
-// JS Section End: Product Card Actions          //
-// ============================================= //
-
 
             // ============================================= //
             // JS Section Start: Resize Handler            //
@@ -461,17 +714,17 @@
                 // Close mobile menu if window becomes wider
                 if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('show-mobile-menu')) {
                     toggleMobileMenu(); // Use the toggle function
-                 }
-                 // Re-check scroll position on resize
-                 handleScroll();
+                }
+                // Re-check scroll position on resize
+                handleScroll();
             };
             window.addEventListener('resize', handleResize);
             // ============================================= //
             // JS Section End: Resize Handler              //
             // ============================================= //
-
         }); // End DOMContentLoaded
     </script>
     <script></script>
-</body>
+    </body>
+
 </html>
