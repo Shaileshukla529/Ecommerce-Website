@@ -1,0 +1,110 @@
+        /* ============================================= */
+        /* CSS Section Start: Reset and Base Styles      */
+        /* ============================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            font-size: 16px; /* Base font size for rem units */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            padding-top: 10rem; /* Initial space = 160px (Navbar 124px + Ann. 36px) */
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure footer stays down */
+            transition: padding-top 0.3s ease;
+        }
+        main {
+             flex-grow: 1; /* Allow main content to grow and push footer */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #4a90e2;
+        }
+
+        button {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            padding: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        ul {
+             list-style: none; /* Remove default list styles */
+        }
+        /* ============================================= */
+        /* CSS Section End: Reset and Base Styles        */
+        /* ============================================= */
+
+        /* ============================================= */
+        /* CSS Section Start: Navbar Styles              */
+        /* ============================================= */
+        /* ... (Navbar CSS remains the same as previous example) ... */
+        
+        .cart_image{width: 32px;}
+        .love_image{width: 36px;}
+        .user_image{width: 36px;}
+        .cart_image:hover {color: #4a90e2; width: 32px; }
+        .announcement-bar { background-color: #111; color: white; text-align: center; padding: 0.5rem 0; font-size: 0.875rem; letter-spacing: 0.5px; height: 2.25rem; transition: all 0.3s ease; overflow: hidden; }
+        .navbar-container { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: transform 0.3s ease; }
+        .navbar { background-color: white; display: flex; flex-direction: column; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        .navbar-top { display: flex; justify-content: space-between; align-items: center; padding: 0.9375rem 5%; border-bottom: 1px solid #f0f0f0; min-height: 4.375rem; }
+        .navbar-brand { font-size: 1.5rem; font-weight: 700; color: #333; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; margin-right: 1.25rem; }
+        .navbar-brand span { color: #4a90e2; }
+        .navbar-brand:hover { color: #333; }
+        .navbar-search { flex: 1; max-width: 31.25rem; margin: 0 1.25rem; position: relative; }
+        .search-input { width: 100%; padding: 0.625rem 2.5rem 0.625rem 0.9375rem; border: none; border-radius: 1.5625rem; background-color: #f5f5f7; font-size: 0.875rem; transition: all 0.3s ease; }
+        .search-input:focus { outline: none; background-color: #fff; box-shadow: 0 0 0 2px #4a90e280; }
+        .search-btn { position: absolute; right: 0.625rem; top: 50%; transform: translateY(-50%); color: #666; font-size: 1.125rem; padding: 0.3125rem; line-height: 1; }
+        .search-btn:hover { color: #4a90e2; }
+        .navbar-actions { display: flex; align-items: center; gap: 1.25rem; flex-shrink: 0; }
+        .action-icon, #loginSignupBtn { position: relative; color: #333; font-size: 1.375rem; cursor: pointer; transition: color 0.2s ease; padding: 0; line-height: 1; }
+        .action-icon:hover, #loginSignupBtn:hover { color: #4a90e2; }
+        .badge { position: absolute; top: -0.5rem; right: -0.5rem; background-color: #e74c3c; color: white; font-size: 0.6875rem; height: 1.125rem; width: 1.125rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; line-height: 1; }
+        .navbar-bottom { display: flex; justify-content: center; align-items: center; padding: 0 5%; min-height: 3.375rem; background-color: #fff; }
+        .navbar-menu { display: flex; list-style: none; }
+        .menu-item { position: relative; }
+        .menu-link { display: block; color: #333; font-weight: 500; padding: 0.9375rem 1.25rem; font-size: 0.9375rem; transition: color 0.3s ease; position: relative; }
+        .menu-link:hover { color: #4a90e2; }
+        .menu-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0.625rem; left: 50%; background-color: #4a90e2; transition: all 0.3s ease; transform: translateX(-50%); }
+        .menu-link:hover::after { width: 60%; }
+        .dropdown, .mega-dropdown { position: absolute; top: 100%; left: 0; background-color: white; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); padding: 0.9375rem 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 1100; }
+        .dropdown { width: 13.75rem; }
+        .menu-item:hover .dropdown, .menu-item:hover .mega-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-link { display: block; padding: 0.625rem 1.25rem; color: #333; font-size: 0.875rem; transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease; }
+        .dropdown-link:hover { background-color: #f8f9fa; color: #4a90e2; padding-left: 1.5625rem; }
+        .mega-dropdown { width: 100%; display: flex; justify-content: space-between; padding: 1.875rem 5%; }
+        .menu-item.mega { position: static; }
+        .menu-item.mega:hover .mega-dropdown { left: 0; }
+        .mega-column { flex: 1; padding: 0 0.9375rem; min-width: 11.25rem; }
+        .mega-title { font-size: 1rem; font-weight: 600; color: #333; margin-bottom: 0.9375rem; padding-bottom: 0.625rem; border-bottom: 1px solid #eee; }
+        .mega-links { list-style: none; }
+        .mega-link { display: block; padding: 0.5rem 0; color: #555; font-size: 0.875rem; transition: color 0.2s ease, padding-left 0.2s ease; }
+        .mega-link:hover { color: #4a90e2; padding-left: 0.3125rem; }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #333; padding: 0.5rem; margin-right: 0.9375rem; }
+        .navbar-container.navbar-scrolled .announcement-bar { height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; }
+        body.navbar-scrolled { padding-top: 7.75rem; }
+        /* ============================================= */
+        /* CSS Section End: Navbar Styles                */
+        /* ============================================= */

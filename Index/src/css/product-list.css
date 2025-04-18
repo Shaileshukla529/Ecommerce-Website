@@ -1,0 +1,45 @@
+ /* ============================================= */
+        /* CSS Section Start: Featured Categories        */
+        /* ============================================= */
+        /* ... (Featured Categories CSS remains the same as previous example) ... */
+        .featured-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; padding: 2.5rem 5%; background-color: #fff; }
+        .category-card { position: relative; height: 18.75rem; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); }
+        .category-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+        .category-card:hover .category-image { transform: scale(1.05); }
+        .category-title { position: absolute; top: 1.25rem; left: 1.25rem; color: white; font-size: 1.375rem; font-weight: 600; z-index: 2; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+        .category-link { position: absolute; bottom: 1.25rem; left: 1.25rem; background-color: white; color: #333; padding: 0.5rem 1.25rem; border-radius: 1.25rem; font-weight: 500; font-size: 0.875rem; transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; z-index: 2; display: inline-block; }
+        .category-link:hover { background-color: #4a90e2; color: white; transform: translateY(-2px); }
+        .category-link:active { transform: scale(0.98) translateY(0); }
+        .category-image::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.4) 100%); z-index: 1; transition: background 0.3s ease; }
+         .category-card:hover .category-image::before { background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.3) 100%); }
+        /* ============================================= */
+        /* CSS Section End: Featured Categories          */
+        /* ============================================= */
+
+
+        
+        /* ============================================= */
+        /* CSS Section Start: Featured Products          */
+        /* ============================================= */
+        /* ... (Featured Products CSS remains the same as previous example) ... */
+        .product-grid-section { padding: 3rem 5%; background-color: #f8f9fa; }
+        .section-title { text-align: center; font-size: 1.75rem; font-weight: 600; margin-bottom: 2.5rem; color: #333; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.875rem; }
+        .product-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+        .product-image-container { position: relative; overflow: hidden; aspect-ratio: 1 / 1.1; }
+        .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-image { transform: scale(1.05); }
+        .product-info { padding: 1rem 1.25rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-name { font-size: 1rem; font-weight: 500; color: #333; margin-bottom: 0.5rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;   -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 2.8em; }
+        .product-name a:hover { color: #4a90e2; }
+        .product-price { font-size: 1.125rem; font-weight: 600; color: #4a90e2; margin-top: auto; padding-top: 0.5rem; }
+        .product-price .original-price { font-size: 0.875rem; color: #999; text-decoration: line-through; margin-left: 0.5rem; }
+        .product-actions { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.9); padding: 0.75rem; display: flex; justify-content: center; gap: 0.625rem; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 3; }
+        .product-card:hover .product-actions { opacity: 1; visibility: visible; transform: translateY(0); }
+        .product-actions .btn-icon { background-color: #eee; color: #333; border-radius: 50%; width: 2.25rem; height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; transition: background-color 0.2s ease, color 0.2s ease; }
+        .product-actions .btn-icon:hover { background-color: #4a90e2; color: white; }
+        /* ============================================= */
+        /* CSS Section End: Featured Products            */
+        /* ============================================= */

@@ -10,5 +10,21 @@
   },
   "devDependencies": {
     "vite": "^6.3.0"
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "esbuild": "^0.25.2",
+    "fdir": "^6.4.3",
+    "nanoid": "^3.3.11",
+    "picocolors": "^1.1.1",
+    "picomatch": "^4.0.2",
+    "postcss": "^8.5.3",
+    "rollup": "^4.40.0",
+    "source-map-js": "^1.2.1",
+    "tinyglobby": "^0.2.12"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -3,9 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CartCraft</title>
+    <title>ShopWave - Complete E-commerce Homepage</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/product-list.css">
+    <link rel="stylesheet" href="src/css/navbar.css">
+    <link rel="stylesheet" href="src/css/modal.css">
+    <link rel="stylesheet" href="src/css/hero.css">
+
 </head>
-<body>
- <button onclick="window.location.href='login.html'">Login</button>   
+<div>
+
+    <header class="navbar-container"> <div class="announcement-bar"> FREE SHIPPING ON ORDERS OVER $50 | EASY RETURNS </div>
+        <nav class="navbar">
+            <div class="navbar-top">
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu"> <i class="fas fa-bars"></i> </button>
+                <a href="/" class="navbar-brand">Shop<span>Wave</span></a> <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..." name="query"> <button type="submit" form="searchForm" class="search-btn" aria-label="Search"> <i class="fas fa-search"></i> </button> </div>
+                <form action="/search" method="get" id="searchForm" style="display: none;"></form> <div class="navbar-actions">
+                    <a href="/wishlist" class="action-icon" aria-label="Wishlist"> <img class="love_image" src="/images/love.png" alt="#wishlist"> <span class="badge">2</span> </a>
+                    <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class ="cart_image" src="/images/cart.png" alt="#cart"> <span class="badge">0</span> </a>
+                    <button id="loginSignupBtn" onclick="window.location.href='login.html'" class="action-icon" aria-label="Login or Sign up"> <img class="user_image" src="/images/user (1).png" alt="#user"> </button>
+                 </div>
+            </div>
+            <div class="navbar-bottom" id="mobileMenu">
+                <div class="mobile-search-container"> <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..." name="mobile_query"> <button type="submit" form="mobileSearchForm" class="search-btn" aria-label="Search"> <i class="fas fa-search"></i> </button> </div> </div>
+                <form action="/search" method="get" id="mobileSearchForm" style="display: none;"></form> <ul class="navbar-menu">
+                    <li class="menu-item"> <a href="/" class="menu-link">Home</a> </li>
+                    <li class="menu-item mega"> <a href="/shop/women" class="menu-link dropdown-toggle">Women</a> <div class="mega-dropdown"> <div class="mega-column"> <h3 class="mega-title">Clothing</h3> <ul class="mega-links"> <li><a href="/shop/women/new-arrivals" class="mega-link">New Arrivals</a></li> <li><a href="/shop/women/dresses" class="mega-link">Dresses</a></li> <li><a href="/shop/women/tops" class="mega-link">Tops</a></li> <li><a href="/shop/women/sweaters" class="mega-link">Sweaters</a></li> <li><a href="/shop/women/jeans" class="mega-link">Jeans</a></li> <li><a href="/shop/women/activewear" class="mega-link">Activewear</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Accessories</h3> <ul class="mega-links"> <li><a href="/shop/women/jewelry" class="mega-link">Jewelry</a></li> <li><a href="/shop/women/bags" class="mega-link">Bags</a></li> <li><a href="/shop/women/scarves" class="mega-link">Scarves</a></li> <li><a href="/shop/women/hats" class="mega-link">Hats</a></li> <li><a href="/shop/women/belts" class="mega-link">Belts</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Shoes</h3> <ul class="mega-links"> <li><a href="/shop/women/boots" class="mega-link">Boots</a></li> <li><a href="/shop/women/heels" class="mega-link">Heels</a></li> <li><a href="/shop/women/flats" class="mega-link">Flats</a></li> <li><a href="/shop/women/sneakers" class="mega-link">Sneakers</a></li> <li><a href="/shop/women/sandals" class="mega-link">Sandals</a></li> </ul> </div> </div> </li>
+                    <li class="menu-item mega"> <a href="/shop/men" class="menu-link dropdown-toggle">Men</a> <div class="mega-dropdown"> <div class="mega-column"> <h3 class="mega-title">Clothing</h3> <ul class="mega-links"> <li><a href="/shop/men/new-arrivals" class="mega-link">New Arrivals</a></li> <li><a href="/shop/men/t-shirts" class="mega-link">T-Shirts</a></li> <li><a href="/shop/men/shirts" class="mega-link">Shirts</a></li> <li><a href="/shop/men/pants" class="mega-link">Pants</a></li> <li><a href="/shop/men/jeans" class="mega-link">Jeans</a></li> <li><a href="/shop/men/activewear" class="mega-link">Activewear</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Accessories</h3> <ul class="mega-links"> <li><a href="/shop/men/watches" class="mega-link">Watches</a></li> <li><a href="/shop/men/belts" class="mega-link">Belts</a></li> <li><a href="/shop/men/wallets" class="mega-link">Wallets</a></li> <li><a href="/shop/men/ties" class="mega-link">Ties</a></li> <li><a href="/shop/men/hats" class="mega-link">Hats</a></li> </ul> </div> <div class="mega-column"> <h3 class="mega-title">Shoes</h3> <ul class="mega-links"> <li><a href="/shop/men/boots" class="mega-link">Boots</a></li> <li><a href="/shop/men/sneakers" class="mega-link">Sneakers</a></li> <li><a href="/shop/men/dress-shoes" class="mega-link">Dress Shoes</a></li> <li><a href="/shop/men/loafers" class="mega-link">Loafers</a></li> <li><a href="/shop/men/sandals" class="mega-link">Sandals</a></li> </ul> </div> </div> </li>
+                    <li class="menu-item"> <a href="/shop/accessories" class="menu-link dropdown-toggle">Accessories</a> <div class="dropdown"> <a href="/shop/accessories/jewelry" class="dropdown-link">Jewelry</a> <a href="/shop/accessories/watches" class="dropdown-link">Watches</a> <a href="/shop/accessories/bags" class="dropdown-link">Bags & Purses</a> <a href="/shop/accessories/sunglasses" class="dropdown-link">Sunglasses</a> <a href="/shop/accessories/hats" class="dropdown-link">Hats & Caps</a> <a href="/shop/accessories/belts" class="dropdown-link">Belts</a> </div> </li>
+                    <li class="menu-item"> <a href="/contact" class="menu-link">Contact</a> </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <section class="hero-container">
+            <div class="hero-slider">
+                <div class="hero-slide active" id="slide1"> <div class="hero-content"> <h5 class="hero-subtitle">Spring Collection 2025</h5> <h1 class="hero-title">Discover Your<br>New Style</h1> <p class="hero-description">Explore our latest arrivals designed for modern lifestyles.</p> <div class="hero-buttons"> <a href="/shop/women" class="btn-primary">Shop Women</a> <a href="/shop/men" class="btn-secondary">Shop Men</a> </div> </div> <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')"></div> </div>
+                <div class="hero-slide" id="slide2"> <div class="hero-content"> <h5 class="hero-subtitle">Limited Edition</h5> <h1 class="hero-title">Summer<br>Essentials</h1> <p class="hero-description">Quality pieces crafted for your vacation needs.</p> <div class="hero-buttons"> <a href="/shop/featured" class="btn-primary">Shop Collection</a> <a href="/about" class="btn-secondary">Learn More</a> </div> </div> <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')"></div> </div>
+                <div class="hero-slide" id="slide3"> <div class="hero-content"> <h5 class="hero-subtitle">Special Offer</h5> <h1 class="hero-title">Up to 40% Off<br>Sale Items</h1> <p class="hero-description">Limited time offers on select styles and accessories.</p> <div class="hero-buttons"> <a href="/shop/sale" class="btn-primary">Shop Sale</a> <a href="/promotions" class="btn-secondary">View Details</a> </div> </div> <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1551488831-00ddcb6ac6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')"></div> </div>
+            </div>
+            <div class="slider-controls"> <div class="slider-dots"> <span class="dot active" data-slide="slide1"></span> <span class="dot" data-slide="slide2"></span> <span class="dot" data-slide="slide3"></span> </div> <div class="slider-arrows"> <button class="arrow-prev" aria-label="Previous slide"> <i class="fas fa-chevron-left"></i> </button> <button class="arrow-next" aria-label="Next slide"> <i class="fas fa-chevron-right"></i> </button> </div> </div>
+        </section>
+        <section class="featured-categories">
+            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Women</h3> <a href="/shop/women" class="category-link">Shop Now</a> </div>
+            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1610384104075-e05c8cf20003?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Men</h3> <a href="/shop/men" class="category-link">Shop Now</a> </div>
+            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Accessories</h3> <a href="/shop/accessories" class="category-link">Shop Now</a> </div>
+            <div class="category-card"> <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')"></div> <h3 class="category-title">Sale</h3> <a href="/shop/sale" class="category-link">Shop Now</a> </div>
+        </section>
+        <section class="product-grid-section">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card" data-product-id="prod001">
+                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1" alt="Stylish Casual Shirt" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for Everyday Wear</a></h3> <p class="product-price">$49.99</p> </div>
+                </div>
+                <div class="product-card" data-product-id="prod002">
+                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a></h3> <p class="product-price">$89.50 <span class="original-price">$110.00</span></p> </div>
+                </div>
+                <div class="product-card" data-product-id="prod003">
+                     <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3" alt="Elegant Evening Dress" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress - Special Occasion</a></h3> <p class="product-price">$120.00</p> </div>
+                </div>
+                <div class="product-card" data-product-id="prod004">
+                     <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4" alt="Classic Leather Watch" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with Strap</a></h3> <p class="product-price">$199.99</p> </div>
+                </div>
+            </div>
+        </section>
+        <section class="product-grid-section">
+            
+            <div class="product-grid">
+                <div class="product-card" data-product-id="prod001">
+                    <div class="product-image-container"> <a href="/product/stylish-casual-shirt"> <img src="https://placehold.co/600x660/EBF4FF/4a90e2?text=Product+1" alt="Stylish Casual Shirt" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/EBF4FF/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/stylish-casual-shirt">Stylish Casual Shirt for Everyday Wear</a></h3> <p class="product-price">$49.99</p> </div>
+                </div>
+                <div class="product-card" data-product-id="prod002">
+                    <div class="product-image-container"> <a href="/product/running-sneakers"> <img src="https://placehold.co/600x660/FFF0EB/d9534f?text=Product+2" alt="Running Sneakers" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF0EB/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/running-sneakers">Comfortable Running Sneakers</a></h3> <p class="product-price">$89.50 <span class="original-price">$110.00</span></p> </div>
+                </div>
+                <div class="product-card" data-product-id="prod003">
+                     <div class="product-image-container"> <a href="/product/elegant-evening-dress"> <img src="https://placehold.co/600x660/F0FFF0/5cb85c?text=Product+3" alt="Elegant Evening Dress" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/F0FFF0/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/elegant-evening-dress">Elegant Evening Dress - Special Occasion</a></h3> <p class="product-price">$120.00</p> </div>
+                </div>
+                <div class="product-card" data-product-id="prod004">
+                     <div class="product-image-container"> <a href="/product/classic-leather-watch"> <img src="https://placehold.co/600x660/FFF8DC/f0ad4e?text=Product+4" alt="Classic Leather Watch" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/600x660/FFF8DC/cccccc?text=Image+Not+Found';"> </a> <div class="product-actions"> <button class="btn-icon" aria-label="Add to Wishlist"><i class="far fa-heart"></i></button> <button class="btn-icon" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></button> <button class="btn-icon" aria-label="Quick View"><i class="fas fa-search"></i></button> </div> </div>
+                    <div class="product-info"> <h3 class="product-name"><a href="/product/classic-leather-watch">Classic Leather Watch with Strap</a></h3> <p class="product-price">$199.99</p> </div>
+                </div>
+            </div>
+        </section>
+        </main> 
+        <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="/shop/women">Women</a></li>
+                    <li><a href="/shop/men">Men</a></li>
+                    <li><a href="/shop/accessories">Accessories</a></li>
+                    <li><a href="/shop/sale">Sale</a></li>
+                    <li><a href="/shop/new-arrivals">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="/customer-service">Customer Service</a></li>
+                    <li><a href="/shipping">Shipping & Returns</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/track-order">Track Order</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+             <div class="footer-column">
+                <h4>Connect With Us</h4>
+                <p>Follow us on social media for updates and promotions.</p>
+                <div class="footer-socials">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="currentYear"></span> ShopWave. All Rights Reserved.
+        </div>
+    </footer> 
+    <button onclick="window.location.href = 'Cart.html' ">HIIII</button>   
+    <script>
+        // Wrap all JS in a DOMContentLoaded listener to ensure HTML is ready
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ============================================= //
+            // JS Section Start: Variable Declarations     //
+            // ============================================= //
+            const navbarContainer = document.querySelector('.navbar-container');
+            const body = document.body;
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = menuToggle ? menuToggle.querySelector('i') : null;
+            const authModal = document.getElementById('authModal');
+            const loginSignupBtn = document.getElementById('loginSignupBtn');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const loginContainer = document.getElementById('loginContainer');
+            const registerContainer = document.getElementById('registerContainer');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const showRegisterLink = document.getElementById('showRegister');
+            const showLoginLink = document.getElementById('showLogin');
+            const loginNotification = document.getElementById('loginNotification');
+            const registerNotification = document.getElementById('registerNotification');
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.arrow-prev');
+            const nextBtn = document.querySelector('.arrow-next');
+            let currentSlide = 0;
+            let slideInterval;
+            const autoPlayDelay = 5000; // ms
+            const currentYearSpan = document.getElementById('currentYear');
+            // ============================================= //
+            // JS Section End: Variable Declarations       //
+            // ============================================= //
+
+
+            // ============================================= //
+            // JS Section Start: General Utility           //
+            // ============================================= //
+            if (currentYearSpan) {
+                 currentYearSpan.textContent = new Date().getFullYear();
+            }
+            // ============================================= //
+            // JS Section End: General Utility             //
+            // ============================================= //
+
+
+            // ============================================= //
+            // JS Section Start: Navbar Functionality      //
+            // ============================================= //
+            const handleScroll = () => {
+                if (!navbarContainer) return;
+                const announcementBarHeight = document.querySelector('.announcement-bar')?.offsetHeight || 0;
+                if (window.innerWidth > 768) {
+                    if (window.scrollY > announcementBarHeight / 2) {
+                        navbarContainer.classList.add('navbar-scrolled');
+                        body.classList.add('navbar-scrolled');
+                    } else {
+                        navbarContainer.classList.remove('navbar-scrolled');
+                        body.classList.remove('navbar-scrolled');
+                    }
+                } else {
+                    navbarContainer.classList.remove('navbar-scrolled');
+                    body.classList.remove('navbar-scrolled');
+                }
+            };
+
+            const closeAllMobileDropdowns = () => {
+                 document.querySelectorAll('.navbar-menu .dropdown.show-dropdown, .navbar-menu .mega-dropdown.show-dropdown').forEach(openDropdown => openDropdown.classList.remove('show-dropdown'));
+                 document.querySelectorAll('.navbar-menu .menu-link.dropdown-toggle.open').forEach(toggle => toggle.classList.remove('open'));
+            }
+
+            const toggleMobileMenu = () => {
+                if (!mobileMenu || !menuIcon) return;
+                mobileMenu.classList.toggle('show-mobile-menu');
+                const isMenuOpen = mobileMenu.classList.contains('show-mobile-menu');
+                menuIcon.classList.toggle('fa-bars', !isMenuOpen);
+                menuIcon.classList.toggle('fa-times', isMenuOpen);
+                if (!isMenuOpen) closeAllMobileDropdowns();
+            };
+
+            const handleMobileDropdownToggle = (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parentMenuItem = e.currentTarget.parentElement;
+                    const dropdown = parentMenuItem.querySelector('.dropdown') || parentMenuItem.querySelector('.mega-dropdown');
+                    if (!dropdown) return;
+                    const isOpening = !dropdown.classList.contains('show-dropdown');
+                    if(isOpening) closeAllMobileDropdowns(); // Close others if opening a new one
+                    dropdown.classList.toggle('show-dropdown');
+                    e.currentTarget.classList.toggle('open', isOpening);
+                }
+            };
+
+            // Initial check in case page loads scrolled
+            handleScroll();
+            // Add event listeners for Navbar
+            window.addEventListener('scroll', handleScroll);
+            if (menuToggle) menuToggle.addEventListener('click', toggleMobileMenu);
+            document.querySelectorAll('.navbar-menu .dropdown-toggle').forEach(item => item.addEventListener('click', handleMobileDropdownToggle));
+            // ============================================= //
+            // JS Section End: Navbar Functionality        //
+            // ============================================= //
+
+
+            // ============================================= //
+            // JS Section Start: Modal Functionality       //
+            // ============================================= //
+            const showNotification = (element, message, type = 'error') => {
+                if (!element) return;
+                element.textContent = message;
+                element.className = `notification ${type}`;
+                element.style.display = 'block';
+            };
+
+            const clearFormState = () => {
+                if (loginNotification) loginNotification.style.display = 'none';
+                if (registerNotification) registerNotification.style.display = 'none';
+                document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
+            }
+
+            const openAuthModal = () => {
+                if (!authModal || !loginContainer || !registerContainer) return;
+                clearFormState();
+                authModal.classList.add('show-modal');
+                registerContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
+                body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            const closeAuthModal = () => {
+                if (!authModal) return;
+                authModal.classList.remove('show-modal');
+                body.style.overflow = ''; // Restore background scrolling
+            }
+
+            const switchToRegister = (e) => {
+                e.preventDefault();
+                if (!loginContainer || !registerContainer) return;
+                clearFormState();
+                loginContainer.style.display = 'none';
+                registerContainer.style.display = 'block';
+            };
+
+            const switchToLogin = (e) => {
+                 e.preventDefault();
+                 if (!loginContainer || !registerContainer) return;
+                 clearFormState();
+                 registerContainer.style.display = 'none';
+                 loginContainer.style.display = 'block';
+            };
+
+            // Modal Event Listeners
+            if (loginSignupBtn) loginSignupBtn.addEventListener('click', openAuthModal);
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeAuthModal);
+            if (authModal) {
+                authModal.addEventListener('click', (event) => {
+                    // Close if clicked directly on the modal overlay (the .modal element)
+                    if (event.target === authModal) closeAuthModal();
+                });
+            }
+            if (showRegisterLink) showRegisterLink.addEventListener('click', switchToRegister);
+            if (showLoginLink) showLoginLink.addEventListener('click', switchToLogin);
+
+            // --- Form Submission Handling (Placeholders) ---
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    clearFormState();
+                    console.log('Login Submitted');
+                    const email = loginForm.querySelector('#login-email').value;
+                    const password = loginForm.querySelector('#login-password').value;
+                    // --- Add real validation and API call here ---
+                    if (email === "test@example.com" && password === "password") {
+                        showNotification(loginNotification, 'Login successful!', 'success');
+                        setTimeout(closeAuthModal, 1500);
+                    } else {
+                        showNotification(loginNotification, 'Invalid email or password.', 'error');
+                    }
+                });
+            }
+
+             if (registerForm) {
+                registerForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    clearFormState();
+                    console.log('Register Submitted');
+                    const passwordInput = registerForm.querySelector('#register-password');
+                    const confirmPasswordInput = registerForm.querySelector('#register-confirm-password');
+                    const password = passwordInput.value;
+                    const confirmPassword = confirmPasswordInput.value;
+                    let isValid = true;
+
+                    // --- Add real validation and API call here ---
+                    // Example: Password match validation
+                    if (password !== confirmPassword) {
+                        showNotification(registerNotification, 'Passwords do not match.', 'error');
+                        // Add error message directly to the span
+                        const confirmPasswordErrorSpan = document.getElementById('register-confirm-password-error');
+                        if (confirmPasswordErrorSpan) {
+                            confirmPasswordErrorSpan.textContent = 'Passwords must match.';
+                        }
+                        isValid = false;
+                    }
+                    // Example: Basic password length
+                     if (password.length < 8) {
+                         showNotification(registerNotification, 'Password must be at least 8 characters.', 'error');
+                         const passwordErrorSpan = document.getElementById('register-password-error');
+                          if (passwordErrorSpan) {
+                            passwordErrorSpan.textContent = 'Password must be at least 8 characters.';
+                        }
+                         isValid = false;
+                     }
+                    // Add other validations (email format, etc.)
+
+                    if (isValid) {
+                        showNotification(registerNotification, 'Registration successful! Please login.', 'success');
+                        setTimeout(() => { // Switch to login after success
+                            if (loginContainer && registerContainer) {
+                                registerContainer.style.display = 'none';
+                                loginContainer.style.display = 'block';
+                            }
+                        }, 2000);
+                    }
+                });
+            }
+            // ============================================= //
+            // JS Section End: Modal Functionality         //
+            // ============================================= //
+
+
+            // ============================================= //
+            // JS Section Start: Hero Slider Functionality //
+            // ============================================= //
+            const initSlider = () => {
+                if (slides.length === 0) return; // Exit if no slides
+                showSlide(currentSlide); // Show initial slide
+                startAutoplay();
+
+                // Event listeners for controls
+                dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const slideId = dot.getAttribute('data-slide');
+                        const slideIndex = Array.from(slides).findIndex(slide => slide.id === slideId);
+                        if (slideIndex !== -1 && slideIndex !== currentSlide) { // Only act if different slide
+                            showSlide(slideIndex);
+                             resetAutoplay(); // Reset timer on manual interaction
+                        }
+                    });
+                });
+
+                if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+                if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+
+                // Pause autoplay on hover
+                 const sliderElement = document.querySelector('.hero-slider');
+                 if (sliderElement) {
+                     sliderElement.addEventListener('mouseenter', pauseAutoplay);
+                     sliderElement.addEventListener('mouseleave', startAutoplay);
+                 }
+            }
+
+            const showSlide = (index) => {
+                // Normalize index
+                currentSlide = index;
+                if (currentSlide >= slides.length) currentSlide = 0;
+                if (currentSlide < 0) currentSlide = slides.length - 1;
+
+                // Update slides
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === currentSlide);
+                });
+
+                // Update dots
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentSlide);
+                });
+            }
+
+            const prevSlide = () => showSlide(currentSlide - 1);
+            const nextSlide = () => showSlide(currentSlide + 1);
+            const startAutoplay = () => {
+                pauseAutoplay(); // Clear existing interval first
+                if (slides.length > 1) { // Only autoplay if more than one slide
+                    slideInterval = setInterval(nextSlide, autoPlayDelay);
+                }
+            }
+            const pauseAutoplay = () => clearInterval(slideInterval);
+            const resetAutoplay = () => { pauseAutoplay(); startAutoplay(); }
+
+            // Initialize the slider only if slides exist
+            if (slides.length > 0) {
+                initSlider();
+            }
+            // ============================================= //
+            // JS Section End: Hero Slider Functionality   //
+            // ============================================= //
+
+// ============================================= //
+// JS Section Start: Product Card Actions        //
+// ============================================= //
+ 
+// ============================================= //
+// JS Section End: Product Card Actions          //
+// ============================================= //
+
+
+            // ============================================= //
+            // JS Section Start: Resize Handler            //
+            // ============================================= //
+            const handleResize = () => {
+                // Close mobile menu if window becomes wider
+                if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('show-mobile-menu')) {
+                    toggleMobileMenu(); // Use the toggle function
+                 }
+                 // Re-check scroll position on resize
+                 handleScroll();
+            };
+            window.addEventListener('resize', handleResize);
+            // ============================================= //
+            // JS Section End: Resize Handler              //
+            // ============================================= //
+
+        }); // End DOMContentLoaded
+    </script>
+    <script></script>
 </body>
 </html>
