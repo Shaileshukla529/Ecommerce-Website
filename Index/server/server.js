@@ -1,37 +1,25 @@
-require('dotenv').config(); // Load .env variables first
+/* server.js */
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db'); // Import DB connection function
-const authRoutes = require('./routes/authRoutes'); // Import auth routes
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const orderRoutes = require('./routes/orderRoutes'); // Import order routes
 
-// --- Initialize Express App ---
 const app = express();
-
-// --- Connect to Database ---
 connectDB();
 
-// --- Middleware ---
-// Enable CORS - Adjust origin for production
-app.use(cors({
-    origin: '*' // Allow all origins for development - BE CAREFUL in production!
-    // origin: 'http://localhost:5173' // Or specify your frontend's origin if using Vite default
-}));
-
-// Body Parser Middleware (for parsing JSON and URL-encoded data)
-app.use(express.json()); // Parses incoming requests with JSON payloads
-app.use(express.urlencoded({ extended: true })); // Parses incoming requests with URL-encoded payloads
+app.use(cors({ origin: '*' })); // Adjust for production
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // --- API Routes ---
-// Mount the authentication routes under the /api prefix
 app.use('/api', authRoutes);
+app.use('/api', orderRoutes); // Mount order routes
 
-// --- Basic Root Route (for testing if server is up) ---
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
-// --- Define Port ---
-const PORT = process.env.PORT || 5000; // Use port from .env or default to 5000
-
-// --- Start Server ---
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
