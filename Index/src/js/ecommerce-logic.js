@@ -9,6 +9,78 @@
 const WISHLIST_STORAGE_KEY = 'shoppingWishlist';
 const CART_STORAGE_KEY = 'shoppingCart';
 
+
+
+// Product Data
+
+const allProductData = [
+    // Men 001 to 004 and 0017 to 0024
+    { id: "men001", name: "Classic Oxford Shirt", price: 69.99, description: "A timeless button-down Oxford shirt.", longDescription: "Made from durable Oxford cloth, perfect for smart-casual looks.", images: ["Men/men_shirt1.avif"], options: { Size: ["S", "M", "L", "XL", "XXL"], Color: ["White", "Light Blue", "Pink Stripe"] } },
+    { id: "men002", name: "Casual Plaid Shirt", price: 59.50, description: "Comfortable long-sleeve plaid shirt.", longDescription: "Soft brushed cotton flannel in a classic plaid pattern.", images: ["Men/men_shirt2.avif"], options: { Size: ["M", "L", "XL"], Color: ["Red/Black", "Blue/Green"] } },
+    { id: "men003", name: "Linen Blend Shirt", price: 75.00, description: "Lightweight linen blend shirt for summer.", longDescription: "Breathable and comfortable, ideal for warm weather.", images: ["Men/men_shirt3.avif"], options: { Size: ["S", "M", "L", "XL"], Color: ["Natural", "Navy", "White"] } },
+    { id: "men004", name: "Denim Work Shirt", price: 85.00, description: "Rugged denim shirt for a casual look.", longDescription: "Durable denim fabric with chest pockets.", images: ["Men/men_shirt4.avif"], options: { Size: ["M", "L", "XL", "XXL"], Color: ["Indigo Blue", "Washed Black"] } },
+    { id: "men005", name: "Short-Sleeve Polo Shirt", price: 49.95, description: "Classic cotton pique polo shirt.", longDescription: "A wardrobe staple featuring a ribbed collar and cuffs.", images: ["Men/men_shirt5.avif"], options: { Size: ["S", "M", "L", "XL"], Color: ["Navy", "White", "Grey", "Red"] } },
+    { id: "men006", name: "Printed Camp Collar Shirt", price: 62.00, originalPrice: 78.00, description: "Short-sleeve shirt with a relaxed camp collar.", longDescription: "Features a vibrant print, perfect for vacations or casual outings.", images: ["Men/men_shirt6.avif"], options: { Size: ["S", "M", "L"], Color: ["Tropical Print", "Abstract Pattern"] } },
+    { id: "men007", name: "Performance Dress Shirt", price: 95.00, description: "Wrinkle-resistant performance dress shirt.", longDescription: "Made with stretch fabric for comfort and easy care, ideal for travel or work.", images: ["Men/men_shirt7.avif"], options: { Size: ["15.5/33", "16/34", "16.5/34", "17/35"], Color: ["White", "Blue", "Grey Check"] } },
+    { id: "men008", name: "Corduroy Overshirt", price: 105.00, description: "Warm corduroy shirt jacket.", longDescription: "Can be worn as a shirt or light jacket, perfect for layering.", images: ["Men/men_shirt8.avif"], options: { Size: ["M", "L", "XL"], Color: ["Brown", "Olive Green"] } },
+    { id: "men009", name: "Band Collar Shirt", price: 70.00, description: "Modern shirt with a band collar.", longDescription: "A contemporary alternative to the traditional collared shirt.", images: ["Men/men_shirt9.avif"], options: { Size: ["S", "M", "L", "XL"], Color: ["White", "Black", "Navy Stripe"] } },
+    // --- Women's Clothing (Generated from image) ---
+    { id: "women001", name: "Elegant Maxi Dress", price: 135.00, description: "Flowy maxi dress for special occasions.", longDescription: "Crafted from lightweight chiffon with intricate detailing.", images: ["Women/women1.avif"], options: { Size: ["S", "M", "L"], Color: ["Floral Print", "Navy"] } },
+    { id: "women002", name: "Casual Knit Top", price: 45.50, description: "Comfortable and versatile knit top.", longDescription: "Soft knit fabric perfect for layering or wearing on its own.", images: ["Women/women2.avif"], options: { Size: ["XS", "S", "M", "L", "XL"], Color: ["Grey", "Cream", "Olive"] } },
+    { id: "women003", name: "Summer Sundress", price: 79.99, description: "Light and airy sundress for warm weather.", longDescription: "Features adjustable straps and a flattering A-line silhouette.", images: ["Women/women3.avif"], options: { Size: ["S", "M", "L"], Color: ["Yellow Print", "White", "Blue Stripe"] } },
+    { id: "women004", name: "Business Casual Blouse", price: 65.00, originalPrice: 80.00, description: "Professional blouse suitable for work.", longDescription: "Elegant design with a comfortable fit for all-day wear.", images: ["Women/women4.avif"], options: { Size: ["S", "M", "L", "XL"], Color: ["White", "Light Blue", "Pink"] } },
+    { id: "women005", name: "High-Waisted Jeans", price: 89.00, description: "Stylish high-waisted denim jeans.", longDescription: "Made with stretch denim for comfort and a flattering fit.", images: ["Women/women5.avif"], options: { Size: ["26", "27", "28", "29", "30", "31"], Color: ["Classic Blue", "Black", "Light Wash"] } },
+    { id: "women006", name: "Cozy Cardigan Sweater", price: 72.00, description: "Soft and warm open-front cardigan.", longDescription: "Perfect for layering during cooler months, made from a soft wool blend.", images: ["Women/women6.avif"], options: { Size: ["S", "M", "L"], Color: ["Beige", "Charcoal", "Burgundy"] } },
+    { id: "women007", name: "Workout Leggings", price: 55.00, description: "High-performance leggings for workouts.", longDescription: "Moisture-wicking fabric with four-way stretch for optimal comfort and movement.", images: ["Women/women7.jpg"], options: { Size: ["XS", "S", "M", "L"], Color: ["Black", "Navy", "Teal"] } },
+    { id: "women008", name: "Formal Evening Gown", price: 250.00, description: "Stunning floor-length gown for formal events.", longDescription: "Elegant silhouette with delicate embellishments, designed to impress.", images: ["Women/women8.jpg"], options: { Size: ["4", "6", "8", "10", "12"], Color: ["Black", "Red", "Emerald Green"] } },
+    { id: "women009", name: "Boho Chic Tunic", price: 68.50, description: "Relaxed fit tunic with bohemian details.", longDescription: "Features embroidery and tassel ties, perfect with jeans or leggings.", images: ["Women/women9.webp"], options: { Size: ["S", "M", "L"], Color: ["White", "Terracotta"] } }, // Note: using .webp
+    { id: "women010", name: "Tailored Blazer", price: 115.00, description: "Sharp, tailored blazer for a polished look.", longDescription: "Single-breasted blazer that can dress up any outfit.", images: ["Women/women10.jpg"], options: { Size: ["S", "M", "L", "XL"], Color: ["Navy", "Black", "Camel"] } },
+    { id: "women011", name: "Pleated Midi Skirt", price: 75.00, description: "Flowy pleated midi skirt.", longDescription: "Elegant and versatile skirt suitable for various occasions.", images: ["Women/women11.jpg"], options: { Size: ["S", "M", "L"], Color: ["Dusty Rose", "Forest Green", "Black"] } },
+    { id: "women012", name: "Graphic Print T-Shirt", price: 32.00, description: "Casual t-shirt with a unique graphic print.", longDescription: "Soft cotton t-shirt with a comfortable fit and eye-catching design.", images: ["Women/women12.jpg"], options: { Size: ["XS", "S", "M", "L", "XL"], Color: ["White", "Grey Heather"] } },
+
+// Make sure window.allProducts = allProductData; is present after the array definition.
+    // Jewellery 013 to 016 and 0032 to 0039 
+    { id: "jewel001", name: "Diamond Solitaire Necklace", price: 1299.99, description: "Classic diamond solitaire pendant.", longDescription: "A timeless piece featuring a sparkling brilliant-cut diamond on a fine chain.", images: ["Jewellery/jewelry1.jpg"], options: { Metal: ["White Gold", "Yellow Gold", "Platinum"] } },
+    { id: "jewel002", name: "Pearl Stud Earrings", price: 149.50, description: "Elegant freshwater pearl stud earrings.", longDescription: "Lustrous pearls set in sterling silver, perfect for everyday elegance.", images: ["Jewellery/jewelry2.jpg"], options: { PearlColor: ["White", "Pink", "Black"] } },
+    { id: "jewel003", name: "Sapphire Ring", price: 899.00, description: "Stunning ring featuring a deep blue sapphire.", longDescription: "A vibrant sapphire gemstone surrounded by smaller diamonds, set in white gold.", images: ["Jewellery/jewelry3.jpg"], options: { Metal: ["White Gold", "Yellow Gold"], Size: ["5", "6", "7", "8"] } },
+    { id: "jewel004", name: "Gold Hoop Earrings", price: 299.00, originalPrice: 350.00, description: "Classic polished gold hoop earrings.", longDescription: "Versatile and stylish hoops crafted from 14k yellow gold.", images: ["Jewellery/jewelry4.jpg"], options: { Metal: ["Yellow Gold", "White Gold", "Rose Gold"] } },
+    { id: "jewel005", name: "Silver Charm Bracelet", price: 180.00, description: "Sterling silver bracelet ready for charms.", longDescription: "A beautiful base bracelet to personalize with your favorite charms.", images: ["Jewellery/jewelry5.jpg"] }, // Maybe no options needed
+    { id: "jewel006", name: "Emerald Pendant", price: 750.00, description: "Vivid green emerald pendant necklace.", longDescription: "A captivating emerald gemstone cut to maximize brilliance, on a delicate chain.", images: ["Jewellery/jewelry6.jpg"], options: { Metal: ["Yellow Gold", "White Gold"] } },
+    { id: "jewel007", name: "Tennis Bracelet", price: 2499.00, description: "Elegant diamond tennis bracelet.", longDescription: "A flexible bracelet lined with individually set diamonds for continuous sparkle.", images: ["Jewellery/jewelry7.jpg"], options: { Metal: ["White Gold", "Platinum"] } },
+    { id: "jewel008", name: "Rose Gold Locket", price: 325.00, description: "Heart-shaped locket in rose gold.", longDescription: "A sentimental piece to hold cherished photos, crafted in warm rose gold.", images: ["Jewellery/jewelry8.jpg"] },
+    { id: "jewel009", name: "Amethyst Drop Earrings", price: 210.00, description: "Graceful earrings featuring amethyst stones.", longDescription: "Rich purple amethyst gemstones dangling elegantly.", images: ["Jewellery/jewelry9.jpg"], options: { Metal: ["Sterling Silver", "Yellow Gold Plated"] } },
+    { id: "jewel010", name: "Men's Signet Ring", price: 450.00, description: "Classic men's signet ring.", longDescription: "A traditional sterling silver signet ring, suitable for engraving.", images: ["Jewellery/jewelry10.jpg"], options: { Metal: ["Sterling Silver", "Yellow Gold"], Size: ["9", "10", "11", "12"] } },
+    { id: "jewel011", name: "Layered Necklace Set", price: 195.00, description: "Set of delicate layered necklaces.", longDescription: "A trendy set of multiple fine chains in silver or gold tone for a layered look.", images: ["Jewellery/jewelry11.jpg"], options: { Color: ["Gold Tone", "Silver Tone"] } },
+
+    // --- Watches (Generated from image) ---
+    { id: "watch001", name: "Classic Analog Watch", price: 199.99, description: "A timeless timepiece for everyday wear.", longDescription: "Features a reliable quartz movement and a durable stainless steel case. Water-resistant.", images: ["Watches/watch1.avif"], options: { StrapColor: ["Black", "Brown", "Silver"] } },
+    { id: "watch002", name: "Sport Chronograph Watch", price: 249.50, description: "Sporty watch with chronograph functions.", longDescription: "Built for active lifestyles with a rugged design and stopwatch capabilities.", images: ["Watches/watch2.avif"], options: { StrapColor: ["Black", "Blue", "Red"] } },
+    { id: "watch003", name: "Minimalist Modern Watch", price: 175.00, description: "Sleek and modern minimalist design.", longDescription: "Clean dial with simple markers, perfect for a sophisticated look.", images: ["Watches/watch3.avif"], options: { StrapColor: ["Silver Mesh", "Black Leather"] } },
+    { id: "watch004", name: "Luxury Gold-Tone Watch", price: 399.00, originalPrice: 450.00, description: "Elegant gold-tone watch for special occasions.", longDescription: "A statement piece featuring premium materials and craftsmanship.", images: ["Watches/watch4.avif"], options: { Metal: ["Gold"] } },
+    { id: "watch005", name: "Digital Smart Watch", price: 299.00, description: "Feature-rich digital smart watch.", longDescription: "Includes fitness tracking, notifications, and customizable watch faces.", images: ["Watches/watch5.avif"], options: { Color: ["Black", "Grey", "Rose Gold"] } },
+    { id: "watch006", name: "Pilot Style Watch", price: 215.00, description: "Aviation-inspired pilot watch.", longDescription: "Classic pilot design with large numerals and high legibility.", images: ["Watches/watch6.avif"], options: { StrapColor: ["Brown Leather", "Black Canvas"] } },
+    { id: "watch007", name: "Diver's Watch", price: 320.00, description: "Robust diver's watch with high water resistance.", longDescription: "Designed for underwater use, featuring a rotating bezel and luminous hands.", images: ["Watches/watch7.avif"], options: { StrapColor: ["Stainless Steel", "Rubber Black"] } },
+    { id: "watch008", name: "Field Watch", price: 185.00, description: "Durable and practical field watch.", longDescription: "Military-inspired design, built for reliability in various conditions.", images: ["Watches/watch8.avif"], options: { StrapColor: ["Green Canvas", "Tan Leather"] } },
+    { id: "watch009", name: "Elegant Dress Watch", price: 280.00, description: "Thin and elegant watch for formal wear.", longDescription: "A refined timepiece that complements suits and formal attire.", images: ["Watches/watch9.avif"], options: { StrapColor: ["Black Leather", "Silver Mesh"] } },
+    { id: "watch010", name: "Vintage Inspired Watch", price: 205.00, description: "Watch with a classic vintage aesthetic.", longDescription: "Captures the charm of older timepieces with modern reliability.", images: ["Watches/watch10.avif"], options: { StrapColor: ["Distressed Brown", "Black"] } },
+    { id: "watch011", name: "Skeleton Automatic Watch", price: 450.00, description: "Watch showcasing its internal automatic movement.", longDescription: "Features a skeleton dial allowing you to see the intricate mechanics.", images: ["Watches/watch11.avif"] }, // May not have options
+    { id: "watch012", name: "Casual Everyday Watch", price: 150.00, description: "A simple and reliable watch for daily use.", longDescription: "Comfortable and versatile design suitable for any casual outfit.", images: ["Watches/watch12.avif"], options: { StrapColor: ["Blue Nylon", "Grey Leather"] } },
+
+];
+
+
+window.allProducts = allProductData;
+
+
+
+
+
+
+
+
+
+
+
 // --- Utility Functions for localStorage ---
 
 /**
@@ -329,18 +401,18 @@ document.addEventListener('DOMContentLoaded', function () {
         // Handle "Add to Cart" click on product grids
         if (target.closest('.btn-icon[aria-label="Add to Cart"]')) {
             event.preventDefault();
-             if (productId && productName && !isNaN(productPrice)) {
-                 addItemToCart(productId, productName, productPrice, productImage, 1);
-             } else {
-                 console.error("Failed to extract product details for cart:", { productId, productName, productPrice, productImage });
-                 alert("Error: Could not get product details to add to cart.");
-             }
+            if (productId && productName && !isNaN(productPrice)) {
+                addItemToCart(productId, productName, productPrice, productImage, 1);
+            } else {
+                console.error("Failed to extract product details for cart:", { productId, productName, productPrice, productImage });
+                alert("Error: Could not get product details to add to cart.");
+            }
         }
 
-         // Handle "Quick View" click (Placeholder)
-         if (target.closest('.btn-icon[aria-label="Quick View"]')) {
-           
-         }
+        // Handle "Quick View" click (Placeholder)
+        if (target.closest('.btn-icon[aria-label="Quick View"]')) {
+
+        }
     }
 
     // --- Initialization and Global Event Listeners ---
@@ -371,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("wishlistUpdated event received.");
         // Re-render wishlist page content IF we are on that page
         if (itemsBody) {
-             renderWishlistPage();
+            renderWishlistPage();
         }
         updateWishlistBadge(); // Always update badge
     });
