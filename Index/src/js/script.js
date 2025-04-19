@@ -9,7 +9,7 @@ const loginNotification = document.getElementById('loginNotification');
 const registerNotification = document.getElementById('registerNotification');
 
 // --- API Base URL (Adjust if your backend runs on a different port) ---
-const API_BASE_URL = 'http://localhost:3000/api'; // Assuming backend runs on port 3000
+const API_BASE_URL = 'http://localhost:5000/api'; // Assuming backend runs on port 3000
 
 // --- Helper Functions ---
 

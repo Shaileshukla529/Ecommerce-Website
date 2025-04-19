@@ -359,15 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Your cart is empty.');
                 return;
             }
-            // Proceed to checkout logic (e.g., redirect, send data to server)
-            alert('Proceeding to checkout...');
-            console.log("Checkout data:", { cart, appliedCoupon });
-            setTimeout(function() {
-                alert('Payement Succesful', { cart, appliedCoupon });
-                saveCart([]);
-                appliedCoupon = null; // Clear coupon on clear cart
-                renderCartItems(); // This will handle empty state and summary update
-              }, 1500); 
+            window.location.href = 'checkout.html'
               
         });
     }

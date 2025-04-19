@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - ShopWave</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/product-list.css">
+    <link rel="stylesheet" href="src/css/navbar.css">
+    <link rel="stylesheet" href="src/css/modal.css">
+    <link rel="stylesheet" href="src/css/hero.css">
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="navbar">
+            <div class="navbar-top">
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu"> <i class="fas fa-bars"></i>
+                </button>
+                <a href="/" class="navbar-brand">Shop<span>Wave</span></a>
+                <div class="navbar-search"> <input type="text" class="search-input" placeholder="Search for products..."
+                        name="query"> <button type="submit" form="searchForm" class="search-btn" aria-label="Search"> <i
+                            class="fas fa-search"></i> </button> </div>
+                <form action="/search" method="get" id="searchForm" style="display: none;"></form>
+                <div class="navbar-actions">
+                    <a href="/wish" class="action-icon" aria-label="Wishlist">
+                        <img class="love_image" src="/images/love.png" alt="#wishlist">
+                        <span class="badge"></span> </a>
+                    <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class="cart_image" src="/images/cart.png" alt="#cart">
+                        <span class="badge">0</span> </a>
+
+                    <a href="my_orders.html" class="action-icon" aria-label="My Orders">
+                        <i class="fas fa-receipt"></i> </a>
+                    <button id="loginSignupBtn" class="action-icon" aria-label="Login or Sign up">
+                        <img class="user_image" src="/images/user (1).png" alt="#user">
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-bottom" id="mobileMenu">
+                <div class="mobile-search-container">
+                    <div class="navbar-search"> <input type="text" class="search-input"
+                            placeholder="Search for products..." name="mobile_query"> <button type="submit"
+                            form="mobileSearchForm" class="search-btn" aria-label="Search"> <i
+                                class="fas fa-search"></i> </button> </div>
+                </div>
+                <form action="/search" method="get" id="mobileSearchForm" style="display: none;"></form>
+                <ul class="navbar-menu">
+                    <li class="menu-item"> <a href="/" class="menu-link">Home</a> </li>
+                    <li class="menu-item mega"> <a href="#site-section-Womens" class="menu-link dropdown-toggle">Women</a>
+                    </li>
+                    <li class="menu-item mega"> <a href="#site-section-Mens" class="menu-link dropdown-toggle">Men</a>
+                    </li>
+                    <li class="menu-item"> <a href="/shop/accessories" class="menu-link dropdown-toggle">Accessories</a>
+                        <div class="dropdown"> <a href="#site-section-jewellery" class="dropdown-link">Jewelry</a> <a
+                                href="#site-section-watches" class="dropdown-link">Watches</a> <a
+                                href="/shop/accessories/bags" class="dropdown-link">Bags & Purses</a> <a
+                                href="/shop/accessories/sunglasses" class="dropdown-link">Sunglasses</a> <a
+                                href="/shop/accessories/hats" class="dropdown-link">Hats & Caps</a> <a
+                                href="/shop/accessories/belts" class="dropdown-link">Belts</a> </div>
+                    </li>
+                    <li class="menu-item"> <a href="#site-section-contact" class="menu-link">Contact</a> </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 md:mb-12">My Orders</h1>
+
+        <div id="orders-container" class="space-y-6">
+            <div id="loading-message" class="text-center text-gray-500 py-10">Loading orders...</div>
+             <div id="no-orders-message" class="text-center text-gray-500 py-10 hidden">You haven't placed any orders yet.</div>
+             <div id="error-message" class="text-center text-red-500 py-10 hidden">Could not load orders. Please try again later.</div>
+        </div>
+    </div>
+
+    <footer id="site-section-contact" class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="/shop/women">Women</a></li>
+                    <li><a href="/shop/men">Men</a></li>
+                    <li><a href="/shop/accessories">Accessories</a></li>
+                    <li><a href="/shop/sale">Sale</a></li>
+                    <li><a href="/shop/new-arrivals">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="/customer-service">Customer Service</a></li>
+                    <li><a href="/shipping">Shipping & Returns</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/track-order">Track Order</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect With Us</h4>
+                <p>Follow us on social media for updates and promotions.</p>
+                <div class="footer-socials">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i
+                            class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="currentYear"></span> ShopWave. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="src/js/my_orders.js"></script>
+    <script src="src/js/ecommerce-logic.js"></script>
+    <script src="src/js/index_page.js"></script>
+</body>
+</html>

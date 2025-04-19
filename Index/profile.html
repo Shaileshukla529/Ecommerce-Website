@@ -40,6 +40,14 @@
                         <span class="detail-label">Email:</span>
                         <span id="profile-email" class="detail-value">Loading...</span>
                     </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Phone:</span>
+                        <span id="profile-phone" class="detail-value">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                         <span class="detail-label">Address:</span>
+                         <span id="profile-address" class="detail-value">Loading...</span>
+                     </div>
                     </div>
                 <button id="logout-btn" class="btn btn-logout">Logout</button>
             </div>
@@ -53,57 +61,99 @@
         </div>
     </footer>
 
+   
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => { // Make async
             const usernameEl = document.getElementById('profile-username');
             const emailEl = document.getElementById('profile-email');
+            const phoneEl = document.getElementById('profile-phone'); // Get phone element
+            const addressEl = document.getElementById('profile-address'); // Get address element
             const logoutBtn = document.getElementById('logout-btn');
             const errorEl = document.getElementById('profile-error');
             const currentYearSpan = document.getElementById('currentYear');
+
+            const API_BASE_URL = 'http://localhost:5000/api'; // Your backend URL
 
             if (currentYearSpan) {
                 currentYearSpan.textContent = new Date().getFullYear();
             }
 
+            // --- Get User ID from localStorage (Still needed to know *who* to fetch) ---
             const userString = localStorage.getItem('user');
-            let user = null;
+            const localUser = userString ? JSON.parse(userString) : null;
 
-            if (userString) {
-                try {
-                    user = JSON.parse(userString);
-                } catch (e) {
-                    console.error("Failed to parse user data:", e);
-                    // Clear invalid data and treat as logged out
-                    localStorage.removeItem('user');
-                    user = null;
-                }
-            }
-
-            if (user && user.username && user.email) {
-                // User is logged in and data is valid
-                if (usernameEl) usernameEl.textContent = user.username;
-                if (emailEl) emailEl.textContent = user.email;
-            } else {
-                // User is not logged in or data is invalid/missing
-                console.log("User not logged in or data missing, redirecting to login.");
+            if (!localUser || !localUser.id) {
+                 console.log("User not logged in locally, redirecting to login.");
                  if (errorEl) {
-                    errorEl.textContent = 'You need to be logged in to view this page. Redirecting...';
-                    errorEl.style.display = 'block';
+                     errorEl.textContent = 'You need to be logged in. Redirecting...';
+                     errorEl.style.display = 'block';
                  }
-                 // Redirect to login page after a short delay
-                 setTimeout(() => {
-                     window.location.href = 'login.html';
-                 }, 2000);
+                 setTimeout(() => { window.location.href = 'login.html'; }, 2000);
+                 return; // Stop execution if not logged in locally
             }
 
-            // Logout functionality
+            const userId = localUser.id;
+
+            // --- Fetch Profile Data from Backend ---
+            try {
+                 // ** TEMPORARY: Using query param. Replace with auth header **
+                const response = await fetch(`${API_BASE_URL}/profile?userId=${userId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Authorization': `Bearer ${your_auth_token}` // Add auth header later
+                    }
+                });
+
+                if (response.ok) {
+                    const userData = await response.json();
+
+                    // Update UI elements
+                    if (usernameEl) usernameEl.textContent = userData.username || 'N/A';
+                    if (emailEl) emailEl.textContent = userData.email || 'N/A';
+                    if (phoneEl) phoneEl.textContent = userData.phone || 'Not provided';
+
+                    // Format and display address
+                    if (addressEl && userData.address) {
+                        const addr = userData.address;
+                        addressEl.textContent = [addr.street, addr.city, addr.state, addr.zip, addr.country]
+                            .filter(part => part) // Remove empty parts
+                            .join(', ') || 'Not provided';
+                    } else if (addressEl) {
+                        addressEl.textContent = 'Not provided';
+                    }
+
+                } else {
+                     // Handle backend error (e.g., user not found, server error)
+                     const errorData = await response.json();
+                     console.error("Failed to fetch profile:", errorData.message || response.statusText);
+                     if (errorEl) {
+                         errorEl.textContent = `Could not load profile: ${errorData.message || 'Server error'}`;
+                         errorEl.style.display = 'block';
+                     }
+                     // Keep potentially stale local data displayed as fallback? Or clear them?
+                     // usernameEl.textContent = localUser.username || 'Error';
+                     // emailEl.textContent = localUser.email || 'Error';
+                }
+
+            } catch (networkError) {
+                 console.error("Network error fetching profile:", networkError);
+                 if (errorEl) {
+                     errorEl.textContent = 'Network error. Could not load profile.';
+                     errorEl.style.display = 'block';
+                 }
+                 // Fallback to local data maybe?
+                 // usernameEl.textContent = localUser.username || 'Network Error';
+                 // emailEl.textContent = localUser.email || 'Network Error';
+            }
+
+            // --- Logout Functionality ---
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', () => {
                     localStorage.removeItem('user');
-                    // Optional: Dispatch an event to notify other parts (like index.html if open)
                     window.dispatchEvent(new CustomEvent('loginStatusChanged'));
                     console.log("User logged out.");
-                    window.location.href = 'index.html'; // Redirect to home page after logout
+                    window.location.href = 'index.html';
                 });
             }
         });

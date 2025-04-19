@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Your E-Commerce Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Base styles for the custom radio indicator */
+        .custom-radio-indicator {
+            position: absolute;
+            top: 1rem; /* Adjust as needed */
+            right: 1rem; /* Adjust as needed */
+            height: 1.25rem; /* h-5 */
+            width: 1.25rem; /* w-5 */
+            border-width: 2px;
+            border-color: #d1d5db; /* gray-300 */
+            border-radius: 9999px; /* rounded-full */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+        }
+        /* Style for the inner dot of the selected radio indicator */
+        .custom-radio-indicator::after {
+            content: "";
+            display: block;
+            height: 0.75rem; /* h-3 */
+            width: 0.75rem; /* w-3 */
+            border-radius: 9999px; /* rounded-full */
+            background-color: white; /* Dot color */
+            transform: scale(0); /* Hidden by default */
+            transition: transform 0.2s ease-in-out;
+        }
+        /* Styles for the selected radio button's label */
+        input[type="radio"]:checked + label {
+            border-color: #2563eb; /* blue-600 */
+            background-color: #eff6ff; /* blue-50 */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-md */
+        }
+        /* Styles for the selected radio button's custom indicator */
+        input[type="radio"]:checked + label .custom-radio-indicator {
+             border-color: #2563eb; /* blue-600 */
+             background-color: #2563eb; /* blue-600 */
+        }
+         /* Show the inner dot when selected */
+        input[type="radio"]:checked + label .custom-radio-indicator::after {
+            transform: scale(1);
+        }
+
+        /* Simple transition for label */
+        label {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 md:mb-12">Checkout</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+
+            <div class="lg:col-span-2 bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <form action="#" method="POST" id="checkout-form">
+                    <section class="mb-8">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Contact Information</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-600 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-600 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 890" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                            </div>
+                             </div>
+                    </section>
+
+                    <section class="mb-8">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Shipping Address</h2>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <label for="address" class="block text-sm font-medium text-gray-600 mb-1">Street Address</label>
+                                <input type="text" id="address" name="address" required placeholder="123 Main St" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-600 mb-1">City</label>
+                                    <input type="text" id="city" name="city" required placeholder="Anytown" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                                </div>
+                                <div>
+                                    <label for="state" class="block text-sm font-medium text-gray-600 mb-1">State / Province</label>
+                                    <input type="text" id="state" name="state" required placeholder="CA" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                                </div>
+                                <div>
+                                    <label for="zip" class="block text-sm font-medium text-gray-600 mb-1">ZIP / Postal Code</label>
+                                    <input type="text" id="zip" name="zip" required placeholder="90210" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150">
+                                </div>
+                            </div>
+                             <div>
+                                <label for="country" class="block text-sm font-medium text-gray-600 mb-1">Country</label>
+                                <select id="country" name="country" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 bg-white">
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="MX">Mexico</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="IN">India</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Payment Method</h2>
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <input type="radio" id="cod" name="payment_method" value="COD" class="hidden peer" checked>
+                                <label for="cod" class="block cursor-pointer p-4 border border-gray-300 rounded-lg hover:bg-gray-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:shadow-md">
+                                    <h3 class="font-semibold text-gray-800">Cash on Delivery (COD)</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Pay with cash when your order is delivered.</p>
+                                    <div class="custom-radio-indicator"></div>
+                                </label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="radio" id="online" name="payment_method" value="Online" class="hidden peer">
+                                <label for="online" class="block cursor-pointer p-4 border border-gray-300 rounded-lg hover:bg-gray-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:shadow-md">
+                                    <h3 class="font-semibold text-gray-800">Online Payment</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Pay securely with Credit Card, Debit Card, or Net Banking.</p>
+                                     <div class="custom-radio-indicator"></div>
+                                    <div id="online-payment-details" class="mt-4 hidden"> <p class="text-sm text-gray-600 italic">Online payment gateway integration would appear here.</p>
+                                        </div>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                </form> </div>
+
+            <div class="lg:col-span-1">
+                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-md sticky top-8">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Order Summary</h2>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x60/e2e8f0/94a3b8?text=Item1" alt="Product Image" class="w-12 h-12 object-cover rounded mr-3">
+                                <div>
+                                    <p class="font-medium text-gray-800">Product Name 1</p>
+                                    <p class="text-sm text-gray-500">Qty: 1</p>
+                                </div>
+                            </div>
+                            <p class="font-medium text-gray-800">$49.99</p>
+                        </div>
+                         <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x60/e2e8f0/94a3b8?text=Item2" alt="Product Image" class="w-12 h-12 object-cover rounded mr-3">
+                                <div>
+                                    <p class="font-medium text-gray-800">Product Name 2</p>
+                                    <p class="text-sm text-gray-500">Qty: 2</p>
+                                </div>
+                            </div>
+                            <p class="font-medium text-gray-800">$25.00</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-4 space-y-2">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal</span>
+                            <span>$74.99</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Shipping</span>
+                            <span>$5.00</span>
+                        </div>
+                         <div class="flex justify-between text-gray-600">
+                            <span>Tax</span>
+                            <span>$6.00</span>
+                        </div>
+                        <div class="flex justify-between font-semibold text-lg text-gray-800 pt-2 border-t mt-2">
+                            <span>Total</span>
+                            <span>$85.99</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <button type="submit" form="checkout-form" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            Place Order
+                        </button>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-4 text-center">
+                        By placing your order, you agree to our <a href="#" class="text-blue-600 hover:underline">Terms & Conditions</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script src="src/js/ecommerce-logic.js"></script>
+<script src="src/js/checkout.js"></script> </body>
+</body>
+</html>
