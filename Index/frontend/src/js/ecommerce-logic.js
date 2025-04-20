@@ -39,7 +39,7 @@ const allProductData = [
     { id: "women012", name: "Graphic Print T-Shirt", price: 32.00, description: "Casual t-shirt with a unique graphic print.", longDescription: "Soft cotton t-shirt with a comfortable fit and eye-catching design.", images: ["Women/women12.jpg"], options: { Size: ["XS", "S", "M", "L", "XL"], Color: ["White", "Grey Heather"] } },
 
     // Make sure window.allProducts = allProductData; is present after the array definition.
-    // Jewellery 013 to 016 and 0032 to 0039 
+    // Jewellery 013 to 016 and 0032 to 0039
     { id: "jewel001", name: "Diamond Solitaire Necklace", price: 1299.99, description: "Classic diamond solitaire pendant.", longDescription: "A timeless piece featuring a sparkling brilliant-cut diamond on a fine chain.", images: ["Jewellery/jewelry1.jpg"], options: { Metal: ["White Gold", "Yellow Gold", "Platinum"] } },
     { id: "jewel002", name: "Pearl Stud Earrings", price: 149.50, description: "Elegant freshwater pearl stud earrings.", longDescription: "Lustrous pearls set in sterling silver, perfect for everyday elegance.", images: ["Jewellery/jewelry2.jpg"], options: { PearlColor: ["White", "Pink", "Black"] } },
     { id: "jewel003", name: "Sapphire Ring", price: 899.00, description: "Stunning ring featuring a deep blue sapphire.", longDescription: "A vibrant sapphire gemstone surrounded by smaller diamonds, set in white gold.", images: ["Jewellery/jewelry3.jpg"], options: { Metal: ["White Gold", "Yellow Gold"], Size: ["5", "6", "7", "8"] } },
@@ -70,7 +70,6 @@ const allProductData = [
 
 
 window.allProducts = allProductData;
-
 
 
 
@@ -196,7 +195,8 @@ function clearWishlist() {
 
 // --- Cart Functions ---
 
-function getCart() {
+// **** CORRECTION: Added 'export' keyword ****
+export function getCart() {
     return getFromStorage(CART_STORAGE_KEY, isValidCartItem);
 }
 
@@ -253,17 +253,16 @@ function updateWishlistBadge() {
     console.log("Wishlist badge updated:", count);
 }
 
-// In frontend/src/js/ecommerce-logic.js
-// From ecommerce-logic.js
-// In frontend/src/js/ecommerce-logic.js
+
+// **** CORRECTION: Added check for badgeElement existence ****
 function updateCartBadge() {
     // Find badge element dynamically using the correct href for MPA
     const badgeElement = document.querySelector('.navbar-actions a[href="Cart.html"] .badge'); // Corrected selector
 
-    if (!badgeElement) {
-        // If not found, try the old selector just in case, or log an error
-        console.warn("Cart badge element selector 'a[href=\"Cart.html\"] .badge' not found. Check navbar HTML structure and link href.");
-        return; // Exit if not found
+    if (!badgeElement) { // <--- ADDED THIS CHECK
+        // If not found, log a message and exit the function gracefully
+        console.log("Cart badge element not found on this page.");
+        return;
     }
 
     const cart = getCart(); // getCart function from ecommerce-logic.js
@@ -351,8 +350,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const target = event.target;
 
         // Handle "Add to Cart" click on wishlist page
-        if (target.classList.contains('btn-add-to-cart')) {
-            const button = target;
+        if (target.closest('.btn-add-to-cart')) { // Use closest for icon clicks
+            const button = target.closest('.btn-add-to-cart');
             const productId = button.dataset.productId;
             const productName = button.dataset.name;
             const productPrice = parseFloat(button.dataset.price);
@@ -371,8 +370,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Handle "Remove" click on wishlist page
-        if (target.classList.contains('remove-item')) {
-            const button = target;
+        if (target.closest('.btn-remove-item')) { // Use closest for icon clicks
+            const button = target.closest('.btn-remove-item');
             const productId = button.dataset.productId;
             const productName = button.dataset.name || 'this item';
             if (confirm(`Remove "${productName}" from your wishlist?`)) {
@@ -380,6 +379,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
 
     // Handler for actions within product grids (other pages)
     function handleProductGridActions(event) {
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Handle "Quick View" click (Placeholder)
         if (target.closest('.btn-icon[aria-label="Quick View"]')) {
-
+            // Implement quick view logic here
         }
     }
 

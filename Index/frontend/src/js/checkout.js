@@ -1,4 +1,8 @@
 /* src/js/checkout.js */
+
+// Import getCart if using modules (ensure ecommerce-logic.js exports it)
+import { getCart } from './ecommerce-logic.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Element References ---
     const checkoutForm = document.getElementById('checkout-form');
@@ -11,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentMethodRadios = document.querySelectorAll('input[name="payment_method"]');
     const onlinePaymentDetailsDiv = document.getElementById('online-payment-details');
 
+    // --- **URL CORRECTION**: Base URL should point to your backend server ---
     const API_BASE_URL = 'https://ecommerce-website-883p.onrender.com'; // Your backend URL
 
     let cartItems = [];
@@ -26,27 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatPrice(amount) {
-        // Ensure amount is a number before formatting
         const numericAmount = Number(amount);
         if (isNaN(numericAmount)) {
-            return '$?.??'; // Or some other indicator for invalid price
+            return '$?.??';
         }
         return `$${numericAmount.toFixed(2)}`;
     }
 
     // --- Load Cart and Display Summary ---
     function loadCartSummary() {
-        // Ensure getCart is available (assuming it's global from ecommerce-logic.js)
+        // Check if getCart was imported correctly
         if (typeof getCart !== 'function') {
-            console.error("getCart function not found. Ensure ecommerce-logic.js is loaded first.");
+            console.error("getCart function not imported or available. Ensure ecommerce-logic.js exports it and checkout.js imports it.");
             displayError("Critical error: Cannot load cart data.");
+            if (placeOrderBtn) placeOrderBtn.disabled = true; // Disable checkout if cart can't load
             return;
         }
         cartItems = getCart();
 
         if (!cartItems || cartItems.length === 0) {
             displayError("Your cart is empty. Redirecting to cart page.");
-            // Disable button immediately if cart is empty on load
             if (placeOrderBtn) placeOrderBtn.disabled = true;
             setTimeout(() => { window.location.href = 'Cart.html'; }, 2500);
             return;
@@ -55,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!orderSummaryContainer || !summarySubtotalEl || !summaryShippingEl || !summaryTaxEl || !summaryTotalEl) {
              console.error("One or more summary DOM elements not found!");
              displayError("Checkout page structure seems broken. Cannot display summary.");
+             if (placeOrderBtn) placeOrderBtn.disabled = true; // Disable checkout if page structure broken
              return;
         }
 
@@ -65,19 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemPrice = parseFloat(item.price);
             const itemQuantity = parseInt(item.quantity, 10);
 
-            // Basic validation for each item
             if (isNaN(itemPrice) || isNaN(itemQuantity) || itemQuantity <= 0) {
                 console.warn(`Skipping invalid item in summary:`, item);
-                return; // Skip this item
+                return;
             }
 
             orderTotals.subtotal += itemPrice * itemQuantity;
 
-            // Create item element for summary
             const itemElement = document.createElement('div');
             itemElement.className = 'flex justify-between items-center';
-
-            // *** THIS IS THE CORRECTED innerHTML part ***
             itemElement.innerHTML = `
                 <div class="flex items-center">
                     <img src="${item.image || 'https://placehold.co/60x60/e2e8f0/94a3b8?text=No+Img'}" alt="${item.name || 'Product'}" class="w-12 h-12 object-cover rounded mr-3">
@@ -88,16 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <p class="font-medium text-gray-800">${formatPrice(itemPrice * itemQuantity)}</p>
             `;
-            // *** End of Correction ***
-
             orderSummaryContainer.appendChild(itemElement);
         });
 
-        // Calculate totals
         const tax = orderTotals.subtotal * orderTotals.taxRate;
         orderTotals.total = orderTotals.subtotal + orderTotals.shipping + tax;
 
-        // Update summary display in DOM
         summarySubtotalEl.textContent = formatPrice(orderTotals.subtotal);
         summaryShippingEl.textContent = formatPrice(orderTotals.shipping);
         summaryTaxEl.textContent = formatPrice(tax);
@@ -107,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Handle Payment Method Change ---
     paymentMethodRadios.forEach(radio => {
         radio.addEventListener('change', (event) => {
-            if (event.target.value === 'Online' && onlinePaymentDetailsDiv) { // Ensure check against 'Online' (uppercase)
+            if (event.target.value === 'Online' && onlinePaymentDetailsDiv) {
                 onlinePaymentDetailsDiv.classList.remove('hidden');
             } else if (onlinePaymentDetailsDiv) {
                 onlinePaymentDetailsDiv.classList.add('hidden');
@@ -118,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
      // --- Handle Verification Call ---
      async function verifyPaymentOnServer(paymentData) {
         try {
-            const response = await fetch(`${API_BASE_URL}/orders/verify-payment`, {
+            // --- **URL CORRECTION**: Added /api ---
+            const response = await fetch(`${API_BASE_URL}/api/orders/verify-payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,7 +124,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(paymentData)
             });
-            return await response.json(); // { success: boolean, message: string, orderId?: string }
+            // Check if response is ok before parsing JSON
+            if (!response.ok) {
+                // Try to parse error message from backend
+                let errorMsg = `Payment verification failed (Status: ${response.status})`;
+                try {
+                    const errorResult = await response.json();
+                    errorMsg = errorResult.message || errorMsg;
+                } catch (jsonError) {
+                    errorMsg = `Payment verification failed: ${response.statusText} (Status: ${response.status})`;
+                }
+                 // Return a failure object
+                 return { success: false, message: errorMsg };
+            }
+            // If response is ok, parse the JSON
+            return await response.json(); // Expect { success: boolean, message: string, orderId?: string }
 
         } catch (error) {
             console.error("Payment Verification Fetch Error:", error);
@@ -150,17 +162,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch(parseError){
                  console.error("Error parsing user from localStorage:", parseError);
                  displayError("Session error. Please log in again.");
-                 // Consider redirecting to login
-                 // window.location.href = 'login.html';
                  return;
             }
 
             if (!user || !user.id) {
                 displayError("You must be logged in to place an order.");
-                 placeOrderBtn.textContent = 'Place Order'; // Reset button text
-                 placeOrderBtn.disabled = false; // Re-enable button
-                // Optionally redirect to login
-                // window.location.href = 'login.html';
+                 placeOrderBtn.textContent = 'Place Order';
+                 placeOrderBtn.disabled = false;
                 return;
             }
             const userId = user.id;
@@ -169,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(checkoutForm);
             const shippingAddress = {
                 name: formData.get('name'),
-                email: formData.get('email'), // Include email
+                email: formData.get('email'),
                 phone: formData.get('phone'),
                 street: formData.get('address'),
                 city: formData.get('city'),
@@ -177,35 +185,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 zip: formData.get('zip'),
                 country: formData.get('country')
             };
-            // Use the corrected uppercase value 'COD' or 'Online'
-            const paymentMethod = formData.get('payment_method');
+            const paymentMethod = formData.get('payment_method'); // 'COD' or 'Online'
 
-            // --- Basic Frontend Validation (Example) ---
+            // --- Basic Frontend Validation ---
             if (!shippingAddress.name || !shippingAddress.email || !shippingAddress.phone || !shippingAddress.street || !shippingAddress.city || !shippingAddress.state || !shippingAddress.zip || !shippingAddress.country || !paymentMethod) {
                  displayError("Please fill in all required fields.");
-                 return; // Stop submission
+                 // Re-enable button if validation fails
+                 placeOrderBtn.textContent = 'Place Order';
+                 placeOrderBtn.disabled = false;
+                 return;
             }
 
-
             // --- Prepare Order Payload ---
-             // Ensure cartItems is up-to-date before creating payload
-             cartItems = getCart();
+             cartItems = getCart(); // Ensure cartItems is up-to-date
              if (!cartItems || cartItems.length === 0) {
                 displayError("Cannot place order, your cart is empty.");
+                placeOrderBtn.textContent = 'Place Order';
+                placeOrderBtn.disabled = false;
                 return;
              }
-            // Recalculate total just before sending, in case something changed
+            // Recalculate total just before sending
             let finalSubtotal = 0;
             cartItems.forEach(item => {
-                finalSubtotal += (parseFloat(item.price) * parseInt(item.quantity));
+                const price = parseFloat(item.price);
+                const quantity = parseInt(item.quantity);
+                if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
+                    finalSubtotal += price * quantity;
+                }
             });
             const finalTax = finalSubtotal * orderTotals.taxRate;
             const finalTotal = finalSubtotal + orderTotals.shipping + finalTax;
 
 
             const orderPayload = {
-                userId: userId,
-                // Filter items just in case validation wasn't perfect earlier
+                userId: userId, // Still insecure, needs proper auth later
                 items: cartItems.filter(item => item && item.id && item.name && !isNaN(parseFloat(item.price)) && !isNaN(parseInt(item.quantity)) && item.quantity > 0)
                                 .map(item => ({
                                     productId: item.id,
@@ -214,15 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                     price: parseFloat(item.price),
                                     image: item.image
                                 })),
-                totalAmount: finalTotal, // Use recalculated total
+                totalAmount: finalTotal,
                 shippingAddress: shippingAddress,
-                paymentMethod: paymentMethod // Should be 'COD' or 'Online'
+                paymentMethod: paymentMethod
             };
 
             // --- Call Backend API to Create Order ---
             try {
                 console.log("Sending order payload:", JSON.stringify(orderPayload));
-                const response = await fetch(`${API_BASE_URL}/orders`, {
+
+                // --- **URL CORRECTION**: Added /api ---
+                const response = await fetch(`${API_BASE_URL}/api/orders`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -231,21 +246,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(orderPayload),
                 });
 
-                // Check if response is ok before trying to parse JSON
                 if (!response.ok) {
-                     // Attempt to get error message from backend JSON response
                      let errorMsg = `Order placement failed (Status: ${response.status})`;
                      try {
                          const errorResult = await response.json();
                          errorMsg = errorResult.message || errorMsg;
                      } catch (jsonError) {
-                         // If response wasn't JSON, use status text
                          errorMsg = `Order placement failed: ${response.statusText} (Status: ${response.status})`;
                      }
-                     throw new Error(errorMsg); // Throw error to be caught below
+                     throw new Error(errorMsg);
                 }
 
-                const result = await response.json(); // Contains orderId, razorpayOrderId, amount, keyId etc. if online
+                const result = await response.json();
                 console.log("Backend create order response:", result);
 
                 const internalOrderId = result.orderId; // Your DB order ID
@@ -253,24 +265,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (paymentMethod === 'Online') {
                     // --- Online Payment: Initiate Razorpay Checkout ---
                     if (!result.razorpayOrderId || !result.amount || !result.keyId) {
-                         // Backend should have sent these if paymentMethod was Online and order creation succeeded
                          displayError("Failed to get payment details from server. Please try again or select COD.");
-                         return; // Stop if necessary details missing
+                         placeOrderBtn.textContent = 'Place Order'; // Reset button
+                         placeOrderBtn.disabled = false;
+                         return;
                     }
 
                     const options = {
                         key: result.keyId,
-                        amount: result.amount, // Amount in paise
+                        amount: result.amount,
                         currency: result.currency || "INR",
                         name: "ShopWave", // Your Store Name
-                        description: `Order ID: ${internalOrderId}`, // Your internal order ID
-                        order_id: result.razorpayOrderId, // Razorpay's generated Order ID
+                        description: `Order ID: ${internalOrderId}`,
+                        order_id: result.razorpayOrderId,
                         handler: async function (rzpResponse) {
-                            // This function executes after payment is successful on Razorpay's side
                             console.log("Razorpay Success Response:", rzpResponse);
-                            placeOrderBtn.textContent = 'Verifying Payment...'; // Update button text
+                            placeOrderBtn.textContent = 'Verifying Payment...';
 
-                            // Send payment details to YOUR backend for verification
                             const verificationResult = await verifyPaymentOnServer({
                                  razorpay_order_id: rzpResponse.razorpay_order_id,
                                  razorpay_payment_id: rzpResponse.razorpay_payment_id,
@@ -280,22 +291,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             console.log("Backend Verification Result:", verificationResult);
 
                             if (verificationResult && verificationResult.success) {
-                                // --- Verification SUCCESS ---
                                 alert('Payment Successful! Order Confirmed.');
-                                // Clear cart *only* after successful server verification
-                                if (typeof getCart === 'function') { // Check again before removing
+                                if (typeof getCart === 'function') {
                                     localStorage.removeItem('shoppingCart');
                                     window.dispatchEvent(new CustomEvent('cartUpdated'));
                                     console.log("Cart Cleared after verification.");
                                 }
-                                // Redirect to confirmation page
                                 window.location.href = `order_confirmation.html?orderId=${verificationResult.orderId || internalOrderId}`;
                             } else {
-                                // --- Verification FAILED ---
                                 displayError(`Payment verification failed: ${verificationResult.message || 'Unknown error'}. Your order might be incomplete. Please contact support with Order ID: ${internalOrderId}`);
-                                // DO NOT clear cart. User might need to retry or contact support.
-                                 placeOrderBtn.textContent = 'Verification Failed - Retry or Contact Support'; // Update button state
-                                 // Optionally keep button disabled or change its behavior
+                                 placeOrderBtn.textContent = 'Verification Failed - Retry or Contact Support';
+                                 // Keep button disabled or enable based on desired retry flow
+                                 // placeOrderBtn.disabled = false;
                             }
                         },
                         prefill: {
@@ -304,19 +311,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             contact: shippingAddress.phone
                         },
                         notes: {
-                            internal_order_id: internalOrderId, // Good practice to include your ID
+                            internal_order_id: internalOrderId,
                             address: `${shippingAddress.street}, ${shippingAddress.city}`
                         },
                         theme: {
-                            color: "#2563EB" // Example: Tailwind blue-600
+                            color: "#2563EB"
                         },
                          modal: {
                             ondismiss: function(){
                                 console.log('Razorpay Checkout form closed by user');
-                                displayError('Payment was cancelled or interrupted.', true); // Don't lock button
-                                placeOrderBtn.textContent = 'Place Order'; // Reset button
+                                displayError('Payment was cancelled or interrupted.', true);
+                                placeOrderBtn.textContent = 'Place Order';
                                 placeOrderBtn.disabled = false;
-                                // Consider backend logic: should the 'Pending' order be cancelled?
                             }
                         }
                     };
@@ -325,39 +331,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     rzp.on('payment.failed', function (response){
                         console.error("Razorpay Payment Failed Event:", response.error);
-                        // Extract more specific details if available
                         let reason = response.error.reason || 'Unknown Reason';
                         let description = response.error.description || 'Payment could not be processed.';
                         let code = response.error.code || 'N/A';
-                        // Metadata might contain useful info like order_id, payment_id
                         console.error("Failure Metadata:", response.error.metadata);
-
                         displayError(`Payment Failed: ${description} (Reason: ${reason}, Code: ${code})`);
-                         // Optionally update your internal order status to Failed via another API call
-                         placeOrderBtn.textContent = 'Payment Failed - Try Again'; // Reset button
+                         placeOrderBtn.textContent = 'Payment Failed - Try Again';
                          placeOrderBtn.disabled = false;
                     });
 
                     console.log("Opening Razorpay Checkout...");
                     rzp.open();
-                    // Let the handlers manage the button state from here
 
                 } else { // COD
                     console.log("COD Order placed successfully (ID:", internalOrderId, ")");
-                    // Clear cart
                      if (typeof getCart === 'function') {
                          localStorage.removeItem('shoppingCart');
                          window.dispatchEvent(new CustomEvent('cartUpdated'));
                          console.log("Cart Cleared for COD.");
                      }
-                    // Redirect to confirmation page
                     window.location.href = `order_confirmation.html?orderId=${internalOrderId}`;
                 }
 
-            } catch (error) { // Catch errors from fetch or !response.ok throw
+            } catch (error) {
                 console.error('Checkout Submission Error:', error);
                 displayError(error.message || 'An unexpected error occurred. Please try again.');
-                // Button state reset is handled within displayError
+                // Reset button in displayError
             }
         });
     } else {
