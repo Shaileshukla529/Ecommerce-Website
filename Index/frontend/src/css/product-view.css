@@ -1,0 +1,209 @@
+/* src/css/product-view.css */
+/* FINAL COMPACT VERSION + COLLAPSIBLE MORE INFO */
+
+/* --- Base Body Font --- */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Main Container Spacing --- */
+main.container {
+    padding-top: 0.25rem;
+    padding-bottom: 1.5rem;
+}
+
+/* --- Breadcrumbs --- */
+nav[aria-label="Breadcrumb"] {
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+}
+
+/* --- Product Detail Container --- */
+#product-detail-container {
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* --- Image Gallery Styling --- */
+.main-image {
+    aspect-ratio: 16 / 10.5; /* Slightly taller than last version, but still wide */
+    overflow: hidden;
+    border-radius: 0.375rem;
+    background-color: #f1f3f5;
+    margin-bottom: 0.5rem;
+}
+
+#main-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keep using cover for better fill */
+    object-position: center center;
+    border-radius: 0.375rem;
+    transition: transform 0.3s ease;
+}
+
+#thumbnail-gallery {
+     gap: 0.25rem;
+     max-width: 100%;
+}
+
+.thumbnail {
+    aspect-ratio: 1 / 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.thumbnail img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center center;
+     transition: transform 0.2s ease;
+}
+.thumbnail:hover img { transform: scale(1.1); }
+
+.thumbnail.active-thumbnail {
+    border: 2px solid #3b82f6;
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.4);
+}
+
+/* --- Product Info Column --- */
+.product-info { display: flex; flex-direction: column; }
+
+/* Typography */
+#product-name {
+    font-size: 1.2rem; /* Slightly larger than previous minimum */
+    font-weight: 600; color: #1f2937; margin-bottom: 0.2rem; line-height: 1.25;
+}
+#product-price {
+    font-size: 1.05rem; /* Slightly larger */
+    font-weight: 700; color: #2563eb; margin-bottom: 0.4rem;
+}
+#product-price .original-price { font-size: 0.8rem; color: #6b7280; text-decoration: line-through; margin-left: 0.4rem; }
+#product-description {
+    color: #4b5563; margin-bottom: 0.75rem; line-height: 1.35; font-size: 0.8rem;
+    /* Consider limiting height if needed */
+    /* max-height: 3.9em; overflow: hidden; text-overflow: ellipsis; */
+}
+
+/* Options Styling */
+#product-options { margin-bottom: 0.75rem; }
+#size-option-group, #color-option-group { margin-bottom: 0.4rem; }
+#size-option-group label, #color-option-group label { display: block; font-size: 0.7rem; font-weight: 500; color: #374151; margin-bottom: 0.2rem; }
+#size-buttons { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.size-button { border: 1px solid #d1d5db; border-radius: 0.25rem; padding: 0.15rem 0.4rem; font-size: 0.7rem; background-color: #fff; transition: all 0.2s ease; cursor: pointer; line-height: 1.1; }
+.size-button:hover { border-color: #9ca3af; }
+.size-button.ring-2 { border-color: #2563eb; background-color: #eff6ff; color: #1d4ed8; font-weight: 500; box-shadow: 0 0 0 1px #bfdbfe; }
+.size-button:focus { outline: none; }
+#color-swatches { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.color-swatch { border: 1px solid #e5e7eb; border-radius: 9999px; width: 1.5rem; height: 1.5rem; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 1px rgba(0,0,0,0.05); position: relative; }
+.color-swatch.border-gray-400 { border-color: #9ca3af; }
+.color-swatch.ring-2 { border-color: #3b82f6; box-shadow: 0 0 0 1px #fff, 0 0 0 3px #3b82f6; }
+.color-swatch:focus { outline: none; }
+.color-swatch.ring-2:focus { box-shadow: 0 0 0 1px #fff, 0 0 0 3px #3b82f6; }
+
+/* Quantity Selector */
+.quantity-selector { margin-bottom: 0.75rem; display: flex; align-items: center; }
+.quantity-selector label { margin-right: 0.4rem; font-size: 0.7rem; font-weight: 500; color: #374151;}
+.quantity-btn { width: 22px; height: 22px; border: 1px solid #d1d5db; background-color: #f9fafb; color: #374151; display: inline-flex; align-items: center; justify-content: center; transition: background-color 0.2s ease; }
+.quantity-btn:hover { background-color: #f3f4f6; }
+.quantity-btn:first-of-type { border-radius: 0.25rem 0 0 0.25rem; }
+.quantity-btn:last-of-type { border-radius: 0 0.25rem 0.25rem 0; }
+.quantity-btn i { font-size: 0.55rem; }
+.quantity-input { width: 35px; height: 22px; text-align: center; border: 1px solid #d1d5db; border-left: none; border-right: none; font-size: 0.8rem; font-weight: 500; color: #1f2937; }
+.quantity-input:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 1px #3b82f6; position: relative; z-index: 1; }
+.quantity-input::-webkit-outer-spin-button, .quantity-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.quantity-input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+/* Action Buttons */
+.action-buttons { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e5e7eb; }
+#add-to-cart-btn, #add-to-wishlist-btn { width: 100%; font-weight: 600; padding: 0.6rem 0.8rem; border-radius: 0.375rem; transition: all 0.2s ease-in-out; display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.75px; }
+#add-to-cart-btn i, #add-to-wishlist-btn i { font-size: 1em; }
+#add-to-cart-btn { background-color: #16a34a; color: white; margin-bottom: 0.4rem; }
+#add-to-cart-btn:hover { background-color: #15803d; box-shadow: 0 3px 8px rgba(22, 163, 74, 0.3); }
+#add-to-wishlist-btn { background-color: transparent; color: #4b5563; border: 1px solid #d1d5db; }
+#add-to-wishlist-btn:hover { background-color: #f3f4f6; border-color: #9ca3af; color: #1f2937; }
+#add-to-wishlist-btn i { color: #f87171; }
+
+/* --- Collapsible More Information Section --- */
+.additional-details {
+    background-color: white;
+    padding: 0; /* Remove padding from container */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    margin-top: 1.25rem;
+    border: 1px solid #e5e7eb; /* Add border */
+    overflow: hidden; /* Prevent content overflow during transition */
+}
+.additional-details h3#more-info-toggle { /* Target the button heading */
+    font-size: 1rem; /* Adjust size */
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0; /* Remove margin */
+    padding: 0.75rem 1rem; /* Add padding */
+    border-bottom: 1px solid #e5e7eb;
+    position: relative; /* Keep relative for icon */
+    cursor: pointer; /* Ensure cursor changes */
+    display: flex; /* Use flex for better alignment with icon */
+    justify-content: space-between; /* Push icon to right */
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+.additional-details h3#more-info-toggle:hover {
+    background-color: #f9fafb; /* Slight hover effect */
+}
+
+.additional-details h3#more-info-toggle i.fas { /* Style the icon */
+    transition: transform 0.3s ease-in-out;
+    color: #6b7280; /* Icon color */
+    font-size: 0.8em; /* Adjust icon size */
+}
+
+/* Rotate icon when expanded */
+.additional-details h3#more-info-toggle.expanded i.fas {
+    transform: rotate(180deg);
+}
+
+#more-info-content {
+    /* Collapsed state set by inline style max-height: 0; */
+    /* Transitions are handled by Tailwind classes or add here */
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    overflow: hidden;
+    padding: 0 1rem; /* Padding only when open */
+}
+
+/* Expanded state (needs JS to toggle a class or change max-height) */
+#more-info-content.expanded {
+    /* Set a large max-height to allow content to show */
+    max-height: 500px; /* Adjust if content can be very long */
+    padding: 1rem 1rem; /* Add padding back when expanded */
+}
+
+#product-long-description {
+    color: #4b5563;
+    line-height: 1.5; /* Slightly less tight */
+    font-size: 0.85rem; /* Slightly larger */
+    padding-top: 0; /* Remove extra top padding */
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 768px) {
+    #product-detail-container { grid-template-columns: 1fr; padding: 0.75rem; gap: 1rem; }
+    /* Further compact mobile view */
+    #product-name { font-size: 1.1rem; }
+    #product-price { font-size: 1rem; }
+    #product-description { font-size: 0.75rem; margin-bottom: 0.6rem;}
+    #product-options { margin-bottom: 0.6rem; }
+    .quantity-selector { margin-bottom: 0.6rem; }
+    .action-buttons { margin-top: 0.5rem; padding-top: 0.5rem; }
+    #add-to-cart-btn, #add-to-wishlist-btn { font-size: 0.7rem; padding: 0.5rem 0.7rem;}
+    .additional-details { padding: 0; margin-top: 1rem; } /* Remove container padding */
+    .additional-details h3#more-info-toggle { font-size: 0.9rem; padding: 0.6rem 0.75rem; }
+    #more-info-content.expanded { padding: 0.75rem; } /* Adjust expanded padding */
+    #product-long-description { font-size: 0.8rem; line-height: 1.4;}
+}
