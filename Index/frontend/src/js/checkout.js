@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentMethodRadios = document.querySelectorAll('input[name="payment_method"]');
     const onlinePaymentDetailsDiv = document.getElementById('online-payment-details');
 
-    const API_BASE_URL = 'http://localhost:5000/api'; // Your backend URL
+    const API_BASE_URL = 'https://ecommerce-website-883p.onrender.com'; // Your backend URL
 
     let cartItems = [];
     let orderTotals = { subtotal: 0, shipping: 5.00, taxRate: 0.08, total: 0 }; // Example defaults

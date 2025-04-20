@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noOrdersMessage = document.getElementById('no-orders-message');
     const errorMessage = document.getElementById('error-message');
 
-    const API_BASE_URL = 'http://localhost:5000/api'; // Your backend URL
+    const API_BASE_URL = 'https://ecommerce-website-883p.onrender.com'; // Your backend URL
 
     function formatPrice(amount) {
         return `$${amount.toFixed(2)}`;
