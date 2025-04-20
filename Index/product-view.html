@@ -172,8 +172,15 @@
         </div>
 
         <div class="additional-details bg-white p-6 rounded-lg shadow-md mt-8">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">More Information</h3>
-            <p id="product-long-description" class="text-gray-600 leading-relaxed">Loading full details...</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 relative cursor-pointer" id="more-info-toggle">
+                More Information
+                <i class="fas fa-chevron-down absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300"></i>
+            </h3>
+            <div id="more-info-content" class="overflow-hidden transition-all duration-500 ease-in-out" style="max-height: 0;">
+                <p id="product-long-description" class="text-gray-600 leading-relaxed pt-2">
+                    Loading full details...
+                </p>
+            </div>
         </div>
 
     </main>
@@ -228,6 +235,47 @@
 
     <script src="src/js/ecommerce-logic.js" defer></script>
     <script src="src/js/product-view.js" defer></script>
+    <script>
+        // Add this script block to product-view.html or product-view.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Collapsible More Info ---
+    const toggleButton = document.getElementById('more-info-toggle');
+    const contentDiv = document.getElementById('more-info-content');
+
+    if (toggleButton && contentDiv) {
+        toggleButton.addEventListener('click', () => {
+            const isExpanded = contentDiv.classList.contains('expanded');
+
+            if (isExpanded) {
+                // Collapse
+                contentDiv.style.maxHeight = '0';
+                contentDiv.classList.remove('expanded');
+                toggleButton.classList.remove('expanded'); // For icon rotation
+            } else {
+                // Expand - Calculate scrollHeight to set max-height for smooth transition
+                contentDiv.style.maxHeight = contentDiv.scrollHeight + 'px';
+                contentDiv.classList.add('expanded');
+                toggleButton.classList.add('expanded'); // For icon rotation
+            }
+        });
+
+        // Optional: Recalculate max-height if window resizes while expanded
+        window.addEventListener('resize', () => {
+             if (contentDiv.classList.contains('expanded')) {
+                  // Temporarily remove max-height to get current scrollHeight
+                  contentDiv.style.maxHeight = 'none';
+                  const currentScrollHeight = contentDiv.scrollHeight;
+                  contentDiv.style.maxHeight = currentScrollHeight + 'px';
+             }
+        });
+    }
+    // --- End Collapsible More Info ---
+
+    // --- Ensure your other product-view.js logic is here ---
+    // Example: loadProductDetails(); setupProductDetailPageListeners();
+});
+    </script>
 </body>
 
 </html>
