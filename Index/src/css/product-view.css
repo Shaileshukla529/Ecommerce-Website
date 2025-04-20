@@ -1,0 +1,304 @@
+/* src/css/product-view.css */
+
+/* --- Base Body Font --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #f0f2f5; Ensure consistency if needed */
+}
+
+/* --- Main Container Spacing --- */
+/* Using Tailwind's 'container' class, adjust if needed */
+/* Add custom padding/margin if Tailwind container isn't sufficient */
+main.container {
+    padding-top: 1rem; /* Space below breadcrumbs */
+    padding-bottom: 3rem; /* Space above footer */
+}
+
+/* --- Breadcrumbs --- */
+nav[aria-label="Breadcrumb"] {
+    margin-bottom: 1.5rem; /* Increased space */
+}
+/* Tailwind styles handle most breadcrumb appearance */
+
+/* --- Product Detail Container --- */
+#product-detail-container {
+    gap: 2rem; /* Adjust gap between columns */
+    padding: 2rem; /* Add more padding inside the white box */
+    /* Tailwind handles grid, bg, rounded, shadow */
+}
+
+/* --- Image Gallery Styling --- */
+.main-image {
+    aspect-ratio: 1 / 1; /* Square aspect ratio */
+    overflow: hidden;
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: #f1f3f5; /* Light background */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+#main-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Or 'contain' */
+    object-position: center center;
+    border-radius: 0.5rem; /* Match container */
+    transition: transform 0.3s ease; /* Add transition for potential zoom */
+}
+/* Optional: Zoom effect on main image hover
+#main-product-image:hover {
+    transform: scale(1.05);
+}
+*/
+
+#thumbnail-gallery {
+     /* Tailwind handles grid, gap */
+     max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+.thumbnail {
+    aspect-ratio: 1 / 1; /* Square thumbnails */
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 0.375rem; /* rounded-md */
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.thumbnail img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover; /* Or 'contain' */
+     object-position: center center;
+     transition: transform 0.2s ease;
+}
+.thumbnail:hover img {
+    transform: scale(1.1); /* Zoom thumbnail image slightly on hover */
+}
+
+/* Active thumbnail style */
+.thumbnail.active-thumbnail {
+    border: 2px solid #3b82f6; /* blue-500 */
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+/* --- Product Info Column --- */
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+#product-name {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600; /* semibold */
+    color: #1f2937; /* gray-800 */
+    margin-bottom: 0.5rem; /* mb-2 */
+    line-height: 1.3;
+}
+
+#product-price {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* bold */
+    color: #2563eb; /* blue-600 */
+    margin-bottom: 1rem; /* mb-4 */
+}
+#product-price .original-price {
+    font-size: 1.125rem; /* text-lg */
+    color: #6b7280; /* gray-500 */
+    text-decoration: line-through;
+    margin-left: 0.75rem;
+}
+
+#product-description {
+    color: #4b5563; /* gray-600 */
+    margin-bottom: 1.5rem; /* mb-6 */
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Options Styling */
+#product-options { margin-bottom: 1.5rem; }
+#size-option-group, #color-option-group { margin-bottom: 1rem; }
+
+#size-option-group label, #color-option-group label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* medium */
+    color: #374151; /* gray-700 */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+/* Size Buttons */
+#size-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.size-button {
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.3rem 0.8rem;
+    font-size: 0.875rem; /* text-sm */
+    background-color: #fff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.size-button:hover { border-color: #9ca3af; /* gray-400 */ }
+.size-button.ring-2 { /* Style for selected button (JS adds/removes this class) */
+    border-color: #2563eb; /* blue-600 */
+    background-color: #eff6ff; /* blue-50 */
+    color: #1d4ed8; /* blue-700 */
+    font-weight: 500;
+    /* Use Tailwind ring classes or simulate with box-shadow */
+    box-shadow: 0 0 0 2px #bfdbfe; /* blue-200 ring simulation */
+}
+.size-button:focus { outline: none; }
+
+/* Color Swatches */
+#color-swatches { display: flex; flex-wrap: wrap; gap: 0.75rem; /* Increased gap */ }
+.color-swatch {
+    border: 2px solid #e5e7eb; /* Default border */
+    border-radius: 9999px; /* rounded-full */
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    position: relative; /* For checkmark */
+}
+.color-swatch.border-gray-400 { border-color: #9ca3af; } /* For white swatch if needed */
+
+/* Selection indication for Color Swatch */
+.color-swatch.ring-2 {
+    border-color: #3b82f6; /* Blue border for selected */
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6; /* Inner white, outer blue rings */
+}
+.color-swatch:focus { outline: none; }
+.color-swatch.ring-2:focus { /* Keep consistent focus */
+     box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6;
+}
+
+/* --- Quantity Selector Styling --- */
+/* Original styles from inline block */
+.quantity-btn {
+    width: 30px; /* Keep original size or adjust */
+    height: 30px;
+    /* Tailwind Classes: border rounded bg-gray-100 hover:bg-gray-200 text-gray-700 */
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    color: #374151;
+    display: inline-flex; /* Ensures icon centers */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+.quantity-btn:hover { background-color: #f3f4f6; }
+.quantity-btn:first-of-type { border-radius: 0.375rem 0 0 0.375rem; }
+.quantity-btn:last-of-type { border-radius: 0 0.375rem 0.375rem 0; }
+.quantity-btn i { font-size: 0.7rem; } /* Make icons smaller */
+
+.quantity-input {
+    width: 50px; /* Keep original size or adjust */
+    height: 30px; /* Match button height */
+    text-align: center;
+    border: 1px solid #d1d5db;
+    border-left: none;
+    border-right: none;
+    /* Tailwind: focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent */
+    font-size: 1rem;
+    font-weight: 500;
+}
+.quantity-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+    position: relative; z-index: 1;
+}
+/* Remove arrows from number input */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.quantity-input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+/* --- Action Buttons Styling --- */
+.action-buttons {
+    margin-top: 1.5rem; /* More space above buttons */
+    padding-top: 1.5rem;
+    border-t: 1px solid #e5e7eb; /* gray-200 */
+}
+
+#add-to-cart-btn, #add-to-wishlist-btn {
+    width: 100%;
+    font-weight: 600;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem; /* Slightly more gap */
+    font-size: 0.9rem; /* Smaller text */
+    text-transform: uppercase;
+    letter-spacing: 0.75px; /* More spacing */
+}
+#add-to-cart-btn i, #add-to-wishlist-btn i {
+    font-size: 1.1em; /* Adjust icon size relative to text */
+}
+
+#add-to-cart-btn {
+    background-color: #16a34a; /* Green-600 */
+    color: white;
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+#add-to-cart-btn:hover {
+    background-color: #15803d; /* Green-700 */
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); /* Green shadow */
+}
+
+/* Outline style for Add to Wishlist */
+#add-to-wishlist-btn {
+    background-color: transparent;
+    color: #4b5563; /* gray-600 */
+    border: 1px solid #d1d5db; /* gray-300 */
+}
+#add-to-wishlist-btn:hover {
+    background-color: #f3f4f6; /* gray-100 */
+    border-color: #9ca3af; /* gray-400 */
+    color: #1f2937; /* gray-800 */
+}
+#add-to-wishlist-btn i { color: #f87171; /* red-400 heart */ }
+
+/* --- More Information Section --- */
+.additional-details {
+    background-color: white;
+    padding: 1.5rem 2rem; /* Increase padding */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06); /* Softer shadow */
+    margin-top: 2rem;
+}
+.additional-details h3 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem; /* More padding */
+    border-bottom: 1px solid #e5e7eb;
+}
+#product-long-description {
+    color: #4b5563;
+    line-height: 1.7; /* Increase line height */
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 768px) {
+    #product-detail-container {
+        grid-template-columns: 1fr; /* Stack columns */
+        padding: 1rem; /* Less padding */
+        gap: 1.5rem; /* Less gap */
+    }
+    .product-info {
+         /* Ensure info section doesn't need justify-between */
+         margin-top: 0; /* Remove potential top margin */
+    }
+    #product-name { font-size: 1.5rem; } /* Smaller */
+    #product-price { font-size: 1.25rem; }
+    .action-buttons { margin-top: 1rem; padding-top: 1rem; }
+    .additional-details { padding: 1rem; margin-top: 1.5rem; }
+}

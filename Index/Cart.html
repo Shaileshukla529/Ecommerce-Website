@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="src/css/cart.css">
     <link rel="stylesheet" href="src/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="src/css/navbar.css">
     <style>
         /* Basic styles for empty cart message visibility */
         .empty-cart {
@@ -43,6 +44,66 @@
 </head>
 
 <body>
+    <header class="navbar-container">
+        <div class="announcement-bar"> FREE SHIPPING ON ORDERS OVER $50 | EASY RETURNS </div>
+        <nav class="navbar">
+            <div class="navbar-top">
+                 <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="/" class="navbar-brand">Shop<span>Wave</span></a>
+
+                <ul class="navbar-menu" id="mainNavMenu"> <li class="mobile-search-container-wrapper"> <div class="mobile-search-container">
+                           <div class="navbar-search mobile-only-search"> <input type="text" class="search-input" placeholder="Search for products..." name="mobile_query">
+                               <button type="submit" form="mobileSearchForm" class="search-btn" aria-label="Search">
+                                   <i class="fas fa-search"></i>
+                               </button>
+                           </div>
+                       </div>
+                       <form action="/search" method="get" id="mobileSearchForm" style="display: none;"></form>
+                    </li>
+                    <li class="menu-item"> <a href="/" class="menu-link">Home</a> </li>
+                    <li class="menu-item mega"> <a href="#site-section-Womens" class="menu-link dropdown-toggle">Women</a>
+                         </li>
+                    <li class="menu-item mega"> <a href="index.html/#site-section-Mens" class="menu-link dropdown-toggle">Men</a>
+                         </li>
+                    <li class="menu-item">
+                        <a href="/shop/accessories" class="menu-link dropdown-toggle">Accessories</a>
+                        <div class="dropdown">
+                            <a href="#site-section-jewellery" class="dropdown-link">Jewelry</a>
+                            <a href="#site-section-watches" class="dropdown-link">Watches</a>
+                            <a href="/shop/accessories/bags" class="dropdown-link">Bags & Purses</a>
+                            <a href="/shop/accessories/sunglasses" class="dropdown-link">Sunglasses</a>
+                            <a href="/shop/accessories/hats" class="dropdown-link">Hats & Caps</a>
+                            <a href="/shop/accessories/belts" class="dropdown-link">Belts</a>
+                        </div>
+                    </li>
+                    <li class="menu-item"> <a href="#site-section-contact" class="menu-link">Contact</a> </li>
+                </ul>
+
+                <div class="navbar-search desktop-search"> <input type="text" class="search-input" placeholder="Search for products..." name="query">
+                     <button type="submit" form="searchForm" class="search-btn" aria-label="Search">
+                         <i class="fas fa-search"></i>
+                     </button>
+                </div>
+                <form action="/search" method="get" id="searchForm" style="display: none;"></form>
+
+                <div class="navbar-actions">
+                    <a href="wish.html" class="action-icon" aria-label="Wishlist"> <img class="love_image" src="/images/love.png" alt="Wishlist">
+                        <span class="badge"></span> </a>
+                    <a href="/cart" class="action-icon" aria-label="Shopping cart"> <img class="cart_image" src="/images/cart.png" alt="Cart">
+                        <span class="badge">0</span> </a>
+                    <a href="my_orders.html" class="action-icon" aria-label="My Orders">
+                        <i class="fas fa-receipt"></i>
+                    </a>
+                    <button id="loginSignupBtn" class="action-icon" aria-label="Login or Sign up">
+                        <img class="user_image" src="/images/user (1).png" alt="User profile/login">
+                    </button>
+                </div>
+            </div>
+            </nav>
+    </header>
 
     <div class="container">
         <div class="page-title">

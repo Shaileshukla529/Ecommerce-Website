@@ -38,7 +38,7 @@ const allProductData = [
     { id: "women011", name: "Pleated Midi Skirt", price: 75.00, description: "Flowy pleated midi skirt.", longDescription: "Elegant and versatile skirt suitable for various occasions.", images: ["Women/women11.jpg"], options: { Size: ["S", "M", "L"], Color: ["Dusty Rose", "Forest Green", "Black"] } },
     { id: "women012", name: "Graphic Print T-Shirt", price: 32.00, description: "Casual t-shirt with a unique graphic print.", longDescription: "Soft cotton t-shirt with a comfortable fit and eye-catching design.", images: ["Women/women12.jpg"], options: { Size: ["XS", "S", "M", "L", "XL"], Color: ["White", "Grey Heather"] } },
 
-// Make sure window.allProducts = allProductData; is present after the array definition.
+    // Make sure window.allProducts = allProductData; is present after the array definition.
     // Jewellery 013 to 016 and 0032 to 0039 
     { id: "jewel001", name: "Diamond Solitaire Necklace", price: 1299.99, description: "Classic diamond solitaire pendant.", longDescription: "A timeless piece featuring a sparkling brilliant-cut diamond on a fine chain.", images: ["Jewellery/jewelry1.jpg"], options: { Metal: ["White Gold", "Yellow Gold", "Platinum"] } },
     { id: "jewel002", name: "Pearl Stud Earrings", price: 149.50, description: "Elegant freshwater pearl stud earrings.", longDescription: "Lustrous pearls set in sterling silver, perfect for everyday elegance.", images: ["Jewellery/jewelry2.jpg"], options: { PearlColor: ["White", "Pink", "Black"] } },
@@ -318,10 +318,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
                     <div class="item-price-col">${formattedPrice}</div>
-                    <div class="item-actions">
-                        <button class="btn-add-to-cart" data-product-id="${item.id}" data-name="${itemName}" data-price="${price}" data-image="${imageSrc}">Add to Cart</button>
-                        <button class="remove-item" data-product-id="${item.id}" data-name="${itemName}" aria-label="Remove ${itemName} from Wishlist">&times; Remove</button>
-                    </div>
+                    <div class="item-actions"> <div class="item-action-buttons"> <button class="btn-add-to-cart" data-product-id="${item.id}" data-name="${item.name}" data-price="${price}" data-image="${imageSrc}">
+            <span>Add to Cart</span>
+        </button>
+        <button class="btn-remove-item" aria-label="Remove ${item.name} from Wishlist" data-product-id="${item.id}" data-name="${item.name}">
+            <i class="fas fa-trash-alt"></i> </button>
+    </div>
+</div>
                 `;
                 itemsBody.appendChild(itemElement);
             });
