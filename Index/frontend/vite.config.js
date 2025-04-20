@@ -1,26 +1,26 @@
 // vite.config.js
-import { resolve } from 'path';
+// No need for 'resolve' from 'path' when using relative paths directly
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        // Define entry points for all your HTML pages
-        main: resolve(__dirname, 'index.html'),
-        login: resolve(__dirname, 'login.html'),
-        cart: resolve(__dirname, 'Cart.html'),
-        checkout: resolve(__dirname, 'checkout.html'),
-        my_orders: resolve(__dirname, 'my_orders.html'),
-        order_confirmation: resolve(__dirname, 'order_confirmation.html'),
-        product_view: resolve(__dirname, 'product-view.html'),
-        profile: resolve(__dirname, 'profile.html'),
-        wish: resolve(__dirname, 'wish.html'),
-        // Add any other HTML pages you have here, giving each a unique key (like 'main', 'login', etc.)
+        // Define entry points using relative paths
+        // Vite resolves these relative to the config file's location
+        main: './index.html',
+        login: './login.html',
+        cart: './Cart.html',
+        checkout: './checkout.html',
+        my_orders: './my_orders.html',
+        order_confirmation: './order_confirmation.html',
+        product_view: './product-view.html',
+        profile: './profile.html',
+        wish: './wish.html',
       },
     },
   },
-  // Ensure the root points to your frontend source directory if needed,
-  // but if vite.config.js is inside 'frontend', this might not be necessary.
-  // root: './', 
+  // Assuming vite.config.js is in the 'frontend' directory,
+  // the root is implicitly '.' (the directory containing the config file).
+  // root: './', // Usually not needed if config is at the root of the source files
 });
