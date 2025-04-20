@@ -1,36 +1,42 @@
-/* server.js - Modified for Vercel */
-require('dotenv').config();
+/* server.js - Modified for Render Web Service */
+require('dotenv').config(); // Ensure environment variables are loaded
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db'); // Assuming db.js is in ./config/
 const authRoutes = require('./routes/authRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
+// Connect to DB - Call this early
+connectDB(); // Make sure this completes before listening if possible, or handles errors gracefully
+
 const app = express();
 
-// Connect to DB - Call this early
-connectDB();
-
 // Middleware
-// Consider restricting CORS origin in production via Vercel env vars
-app.use(cors({ origin: '*' }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// TODO: Restrict CORS origin in production for better security.
+// Replace '*' with your frontend's deployed URL from Render
+// Example: const frontendURL = process.env.FRONTEND_URL || 'http://localhost:xxxx'; // Get from env var
+// app.use(cors({ origin: frontendURL }));
+app.use(cors({ origin: '*' })); // Allows all origins for now (easier debugging)
+
+app.use(express.json()); // To parse JSON request bodies
+app.use(express.urlencoded({ extended: true })); // To parse URL-encoded request bodies
 
 // --- API Routes ---
-// Vercel will typically route requests like '/api/login' directly here
+// Requests like '/api/login' will be handled by these routers
 app.use('/api', authRoutes);
 app.use('/api', orderRoutes);
 
 // Optional: A root route for the API itself for testing
 app.get('/api', (req, res) => {
-    res.send('API Root is running...');
+    res.send('Shopwave API is running...');
 });
 
-// --- REMOVED THIS SECTION ---
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-// --- END REMOVED SECTION ---
+// --- ** IMPORTANT: Server Listening Logic ** ---
+// Render provides the PORT environment variable
+const PORT = process.env.PORT || 5000; // Use Render's port, fallback to 5000 for local dev
 
-// --- Export the Express app for Vercel ---
-module.exports = app;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// --- ** End Server Listening Logic ** ---
+
+// --- REMOVE serverless export ---
+// module.exports = app; // Remove this line if it exists
