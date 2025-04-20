@@ -253,14 +253,25 @@ function updateWishlistBadge() {
     console.log("Wishlist badge updated:", count);
 }
 
+// In frontend/src/js/ecommerce-logic.js
+// From ecommerce-logic.js
+// In frontend/src/js/ecommerce-logic.js
 function updateCartBadge() {
-    const badgeElement = document.querySelector('.navbar-actions a[href="/cart"] .badge');
-    if (!badgeElement) return;
-    const cart = getCart();
+    // Find badge element dynamically using the correct href for MPA
+    const badgeElement = document.querySelector('.navbar-actions a[href="Cart.html"] .badge'); // Corrected selector
+
+    if (!badgeElement) {
+        // If not found, try the old selector just in case, or log an error
+        console.warn("Cart badge element selector 'a[href=\"Cart.html\"] .badge' not found. Check navbar HTML structure and link href.");
+        return; // Exit if not found
+    }
+
+    const cart = getCart(); // getCart function from ecommerce-logic.js
     let totalQuantity = 0;
     cart.forEach(item => { totalQuantity += parseInt(item.quantity, 10) || 0; });
+
     badgeElement.textContent = totalQuantity;
-    badgeElement.style.display = totalQuantity > 0 ? 'flex' : 'none';
+    badgeElement.style.display = totalQuantity > 0 ? 'flex' : 'none'; // Use 'flex' or 'inline-block' based on CSS
     console.log("Cart badge updated:", totalQuantity);
 }
 
